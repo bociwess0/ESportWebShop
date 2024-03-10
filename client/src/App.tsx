@@ -5,6 +5,7 @@ import { Product } from './Interfaces/Interface';
 import Header from './Components/Layout/Header/Header';
 import Products from './Pages/Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "@fontsource/poppins";
 
 function App() {
 
