@@ -1,5 +1,7 @@
 .productItem {
     margin-bottom: 20px;
+    background: #ffffff;
+
 }
 
 .priceWrapper {
@@ -12,14 +14,21 @@
 .imgWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 10px;
+    justify-content: space-between;
     height: 20rem;
+    padding: 0 10px;
+}
+
+.productImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .imgWrapper img {
     object-fit: cover;
-    max-width: 200px;
+    max-width: 250px;
     max-height: 250px;
 }
 
@@ -34,6 +43,17 @@
     width: 75%;
     height: 100%;
     background: #000000;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    background: #EB221C;
     color: #ffffff;
     text-transform: uppercase;
 }

@@ -16,10 +16,10 @@ function ProductItem({product}: Props) {
                     <div className={classes.productImg}>
                         <img src={productImage} alt="" />
                     </div>
+                    <div className={classes.description}>{product.name}</div>
                 </div>
-                <div className={classes.description}>{product.name}</div>
                 <div className={classes.priceWrapper}>
-                    <button className={classes.learnMoreButton}>Learn More</button>
+                    <button className={classes.learnMoreButton}>Add To Cart</button>
                     <div className={classes.price}>{product.price}</div>
                 </div>
             </div>
