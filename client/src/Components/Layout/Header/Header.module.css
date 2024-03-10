@@ -1,0 +1,27 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #151718;
+    height: 80px;
+    width: 100%;
+}
+
+.imgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 50px;
+    max-width: 50px;
+    padding: 10px;
+    background: #F8252C;
+    border-radius: 50%;
+}
+
+.imgWrapper img {
+    height: 30px;
+    width: 30px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
+}

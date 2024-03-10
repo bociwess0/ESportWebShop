@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { fetchProducts } from './DatabaseRequests/Requests';
 import { Product } from './Interfaces/Interface';
+import Header from './Components/Layout/Header/Header';
 
 function App() {
 
@@ -14,14 +15,12 @@ function App() {
     }
 
     getProducts();
-    console.log(products);
-    
-
+  
   }, [])
 
   return (
     <div className="App">
-      {products.map((item) => <p>{item.name}</p>)}
+      <Header />
     </div>
   );
 }
