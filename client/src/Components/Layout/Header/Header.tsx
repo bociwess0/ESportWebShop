@@ -1,12 +1,17 @@
 import classes from './Header.module.css';
-import logoImage from '../../../Assets/shopping-cart.png';
+import cartImage from '../../../Assets/shopping-cart.png';
+import logoImage from '../../../Assets/sneakers.png';
 
 function Header() {
     return (
         <div className={classes.header}>
-            <div className="logo"></div>
-            <div className={classes.imgWrapper}>
+            <div className={classes.logoWrapper}>
               <img src={logoImage} alt="" />
+            </div>
+            <div className={classes.imgWrapper}>
+              <a href="#">
+                <img src={cartImage} alt="" />
+              </a>
             </div>
         </div>
       );
