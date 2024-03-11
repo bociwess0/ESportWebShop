@@ -6,10 +6,14 @@ import Header from './Components/Layout/Header/Header';
 import Products from './Pages/Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fontsource/poppins";
+import { Provider, useDispatch } from 'react-redux';
+import { store } from './Redux/store';
+import { importProductsFromDatabase } from './Redux/productSlice';
 
 function App() {
 
   const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getProducts() {
@@ -17,13 +21,14 @@ function App() {
     }
 
     getProducts();
+    dispatch(importProductsFromDatabase({products: products}));
   
   }, [])
 
   return (
     <div className="App">
       <Header />
-      <Products products={products}  />
+      <Products />
     </div>
   );
 }
