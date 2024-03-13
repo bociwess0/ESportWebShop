@@ -20,7 +20,6 @@ function App() {
       setProducts(await fetchProducts());
     }
 
-    
     getProducts();
     
     dispatch(importProductsFromDatabase({products: products}));
