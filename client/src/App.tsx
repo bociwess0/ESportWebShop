@@ -9,6 +9,7 @@ import "@fontsource/poppins";
 import { Provider, useDispatch } from 'react-redux';
 import { store } from './Redux/store';
 import { importProductsFromDatabase } from './Redux/productSlice';
+import BannerImage from './Components/BannerImage/BannerImage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 
     getProducts();
     
+    
     dispatch(importProductsFromDatabase({products: products}));
   
   }, [])
@@ -29,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <BannerImage />
       <Products />
     </div>
   );

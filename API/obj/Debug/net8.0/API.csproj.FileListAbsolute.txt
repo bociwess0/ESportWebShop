@@ -253,3 +253,4 @@ C:\Users\Bogdan\Desktop\ETechWebShop\API\obj\Debug\net8.0\refint\API.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\API\obj\Debug\net8.0\API.pdb
 C:\Users\Bogdan\Desktop\ETechWebShop\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Bogdan\Desktop\ETechWebShop\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Bogdan\Desktop\ETechWebShop\API\obj\Debug\net8.0\API.sourcelink.json
