@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NcD1351CcVJtuRQ+n3t0JJkHJPuLQZY1IpxCPoqSKQZd7BgI1AoLdeA0kyTvQmkXItR54o/85I83Cd30f73XTA==",
+  "dgSpecHash": "MsOAwaj7fgYeveW+G90h2l3OtxcWkC3+S9/ak1wwpmsIqHVKL1lSnNgw8k2Tm8nlJm99vrkKZLMiED291tRh7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bogdan\\Desktop\\ESportWebShop\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bogdan\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bogdan\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

@@ -5,6 +5,7 @@ import { Product } from "../Interfaces/Interface";
 
 const URL = "http://localhost:5164/api/";
 
+
 export async function fetchProducts(): Promise<Product[]> {
     const response: AxiosResponse<any> = await axios.get(URL + "Products");
     const products: Product[] = [];
