@@ -23,7 +23,6 @@ function App() {
 
     getProducts();
     
-    
     dispatch(importProductsFromDatabase({products: products}));
   
   }, [])
