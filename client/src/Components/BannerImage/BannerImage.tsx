@@ -1,5 +1,5 @@
 import classes from './BannerImage.module.css';
-import BannerImg from '../../Assets/home_banner.jpg';
+import BannerImg from '../../Assets/banner.png';
 
 function BannerImage() {
     return (
