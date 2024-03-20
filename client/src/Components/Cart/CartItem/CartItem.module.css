@@ -1,0 +1,111 @@
+.cartItem {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1D1E21;
+    margin-bottom: 20px;
+    padding-right: 30px;
+}
+
+.imgAndPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+}
+
+.cartItem .imgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 220px;
+    padding: 10px;
+    background: #ffffff;
+}
+
+.cartItem .imgWrapper img {
+    max-width: 150px;
+}
+
+.cartItem .price  {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.cartItem .btnWrapper button {
+    border-radius: 20px;
+    border: 2px solid #7D8693;
+    background: transparent;
+    color: #7D8693;
+    padding: 5px 10px;
+}
+
+.cartItem .btnWrapper button:hover {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.category {
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: #7D8693;
+    color: #ffffff;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.name {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quantityWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantityText {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.minus {
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 5px 20px;
+    font-weight: 600;
+}
+
+.number {
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    background: #ffffff;
+    padding: 5px;
+    font-weight: 600;
+    max-width: 80px;
+    text-align: center;
+}
+
+.plus {
+    border-radius: 20px;
+    border: 2px solid #F8252C;
+    background: #F8252C;
+    color: #ffffff;
+    padding: 5px 20px;
+    font-weight: 600;
+}
