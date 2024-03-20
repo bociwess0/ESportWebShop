@@ -1,6 +1,10 @@
+import CartProducts from "../Components/Cart/CartProducts/CartProducts";
+
 function Cart() {
     return(
-        <div></div>
+        <div>
+            <CartProducts />
+        </div>
     )
 }
 

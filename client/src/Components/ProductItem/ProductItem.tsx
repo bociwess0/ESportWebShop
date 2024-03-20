@@ -1,7 +1,7 @@
 import { Col } from "react-bootstrap";
 import classes from './ProductItem.module.css';
 import { Product } from "../../Interfaces/Interface";
-import productImage from '../../Assets/sneakers1.jpg';
+import productImage from '../../Assets/headphones.png';
 
 
 interface Props {
