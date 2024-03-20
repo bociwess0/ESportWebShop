@@ -21,18 +21,6 @@
     border-radius: 50%;
 }
 
-.imgWrapper a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.imgWrapper img {
-    height: 25px;
-    width: 25px;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
-}
-
 .logoWrapper img {
     filter: brightness(0) saturate(100%) invert(26%) sepia(28%) saturate(6854%) hue-rotate(342deg) brightness(95%) contrast(106%);
 }

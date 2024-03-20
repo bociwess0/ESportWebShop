@@ -1,7 +1,7 @@
 import classes from './Header.module.css';
-import cartImage from '../../../Assets/shopping-cart.png';
 import logoImage from '../../../Assets/sneakers.png';
 import { NavLink } from 'react-router-dom';
+import HeaderCart from './HeaderCart/HeaderCart';
 
 function Header() {
     return (
@@ -11,12 +11,10 @@ function Header() {
                 <img src={logoImage} alt="" />
               </div>
             </NavLink>
-            <NavLink to="/cart">
-              <div className={classes.imgWrapper}>
-                <a href="#">
-                  <img src={cartImage} alt="" />
-                </a>
-              </div>
+            <NavLink to="/cart" style={() => {
+              return {textDecorationLine: 'none', color: '#F8252C'}
+            }}>
+              <HeaderCart />
             </NavLink>
         </div>
       );
