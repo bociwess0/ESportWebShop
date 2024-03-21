@@ -1,12 +1,21 @@
+import { useDispatch } from "react-redux";
 import productImage from "../../../Assets/headphones.png";
 import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
+import { removeFromCart } from "../../../Redux/cartSlice";
 
 interface Props {
     product: Product;
 }
 
 function CartItem({product}: Props) {
+
+    const dispatch = useDispatch();
+
+    const removeFromCartHandler = () => {
+        dispatch(removeFromCart({id: product.id}))
+    }
+
     return(
         <div className={classes.cartItem}>
             <div className={classes.imgAndPrice}>
@@ -26,7 +35,7 @@ function CartItem({product}: Props) {
             </div>
             <div className={classes.price}>{`${product.price}€`}</div>
             <div className={classes.btnWrapper}>
-                <button>Remove</button>
+                <button onClick={removeFromCartHandler}>Remove</button>
             </div>
         </div>
     )
