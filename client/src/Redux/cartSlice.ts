@@ -11,7 +11,20 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<{product: Product}>) => {
-            state.products.push(action.payload.product);
+
+            let addedProduct = action.payload.product;
+            let addedProductIndex = state.products.findIndex((item: Product) => item.id === addedProduct.id);
+
+            if(addedProductIndex !== -1) {
+                state.products[addedProductIndex].quantityInCart += 1;
+            } else {
+                let newProduct:Product = {
+                    ...addedProduct,
+                    quantityInCart: 1
+                }
+                state.products.push(newProduct);
+            }
+
         },
         removeFromCart: (state, action: PayloadAction<{id: number}>) => {
             let filteredProducts: Product[] = state.products.filter((item: Product) => item.id !== action.payload.id);

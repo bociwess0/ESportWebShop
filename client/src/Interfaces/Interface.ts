@@ -6,5 +6,6 @@ export interface Product {
     pictureUrl: string,
     type: string,
     brand: string,
-    quantityInStock: number
+    quantityInStock: number,
+    quantityInCart: number
 }

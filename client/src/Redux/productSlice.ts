@@ -11,7 +11,17 @@ const productSlice = createSlice ({
     initialState,
     reducers: {
         importProductsFromDatabase: (state, action: PayloadAction<{products : Product[]}>) => {
-            state.products = action.payload.products;
+
+            let formatedProducts:Product[] = [];
+
+            action.payload.products.forEach((item: Product) => {
+                formatedProducts.push({
+                    ...item,
+                    quantityInCart: 0
+                })
+            })
+
+            state.products = formatedProducts;
         }
     }
 })
