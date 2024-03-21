@@ -1,7 +1,12 @@
 import productImage from "../../../Assets/headphones.png";
+import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
 
-function CartItem() {
+interface Props {
+    product: Product;
+}
+
+function CartItem({product}: Props) {
     return(
         <div className={classes.cartItem}>
             <div className={classes.imgAndPrice}>
@@ -9,8 +14,8 @@ function CartItem() {
                     <img src={productImage} alt="" />
                 </div>
                 <div className={classes.cartInfo}>
-                    <div className={classes.category}>MICE</div>
-                    <div className={classes.name}>MAD CATZ R.A.T.1</div>
+                    <div className={classes.category}>{product.brand}</div>
+                    <div className={classes.name}>{product.name}</div>
                 </div>
             </div>
             <div className={classes.quantityWrapper}>
@@ -19,7 +24,7 @@ function CartItem() {
                 <input className={classes.number} value={1} />
                 <button className={classes.plus}>+</button>
             </div>
-            <div className={classes.price}>20000€</div>
+            <div className={classes.price}>{`${product.price}€`}</div>
             <div className={classes.btnWrapper}>
                 <button>Remove</button>
             </div>

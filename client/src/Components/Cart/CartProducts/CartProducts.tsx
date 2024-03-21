@@ -1,11 +1,17 @@
 import { Container } from "react-bootstrap";
 import CartItem from "../CartItem/CartItem";
+import { useSelector } from "react-redux";
+import { Product } from "../../../Interfaces/Interface";
+import { RootStateProducts } from "../../../Redux/productSlice";
 
 function CartProducts() {
+
+    const products: Product[] = useSelector((state: RootStateProducts) => state.cartActions.products);
+
     return (
         <div className="cartProducts">
             <Container>
-                <CartItem />
+                {products.map((item: Product) => <CartItem product={item} />)}
             </Container>
         </div>
     )

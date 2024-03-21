@@ -2,6 +2,8 @@ import { Col } from "react-bootstrap";
 import classes from './ProductItem.module.css';
 import { Product } from "../../Interfaces/Interface";
 import productImage from '../../Assets/headphones.png';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Redux/cartSlice";
 
 
 interface Props {
@@ -9,6 +11,13 @@ interface Props {
 }
 
 function ProductItem({product}: Props) {
+
+    const dispatch = useDispatch();
+
+    const addToCartHandler = () => {
+        dispatch(addToCart({product: product}));
+    }
+
     return(
         <Col xs={6} sm={3}>
             <div className={classes.productItem}>
@@ -19,7 +28,7 @@ function ProductItem({product}: Props) {
                     <div className={classes.description}>{product.name}</div>
                 </div>
                 <div className={classes.priceWrapper}>
-                    <button className={classes.learnMoreButton}>Add To Cart</button>
+                    <button onClick={addToCartHandler} className={classes.learnMoreButton}>Add To Cart</button>
                     <div className={classes.price}>{product.price}</div>
                 </div>
             </div>
