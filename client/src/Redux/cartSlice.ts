@@ -37,6 +37,24 @@ const productSlice = createSlice({
             state.products = filteredProducts;
             state.totalProductsInCart-= action.payload.item.quantityInCart;
             state.totalPrice-= action.payload.item.price * action.payload.item.quantityInCart;
+        },
+        changeProductQuantity: (state, action: PayloadAction<{value: number, action: string, product: Product}>) => {
+
+            let foundedProductIndex = state.products.findIndex((item: Product) => item.id === action.payload.product.id);
+            let foundedProduct = state.products[foundedProductIndex];
+
+            switch(action.payload.action) {
+                case "increase": {
+                    foundedProduct.quantityInCart++;
+                    state.totalProductsInCart++;
+                    state.totalPrice+=action.payload.product.price;
+                } break;
+                case "reduce": {
+                    foundedProduct.quantityInCart--;
+                    state.totalProductsInCart--;
+                    state.totalPrice-=action.payload.product.price;
+                } break;
+            }
         }
     }
     
@@ -47,6 +65,7 @@ const rootReducer = combineReducers({});
 
 export const addToCart = productSlice.actions.addToCart;
 export const removeFromCart = productSlice.actions.removeFromCart;
+export const changeQuantity = productSlice.actions.changeProductQuantity
 export type RootStateProducts = ReturnType<typeof rootReducer>;
 
 export default cartReducer;
