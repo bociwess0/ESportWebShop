@@ -13,7 +13,11 @@ function CartItem({product}: Props) {
     const dispatch = useDispatch();
 
     const removeFromCartHandler = () => {
-        dispatch(removeFromCart({id: product.id}))
+        dispatch(removeFromCart({item: product}))
+    }
+
+    const onChangeHandler = () => {
+
     }
 
     return(
@@ -30,7 +34,7 @@ function CartItem({product}: Props) {
             <div className={classes.quantityWrapper}>
                 <div className={classes.quantityText}>Quantity:</div>
                 <button className={classes.minus}>—</button>
-                <input className={classes.number} value={product.quantityInCart} />
+                <input onChange={onChangeHandler} className={classes.number} value={product.quantityInCart} />
                 <button className={classes.plus}>+</button>
             </div>
             <div className={classes.price}>{`${product.price}€`}</div>

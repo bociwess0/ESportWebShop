@@ -11,7 +11,7 @@ function CartProducts() {
     return (
         <div className="cartProducts">
             <Container>
-                {products.map((item: Product) => <CartItem product={item} />)}
+                {products.map((item: Product) => <CartItem product={item} key={item.id}/>)}
             </Container>
         </div>
     )

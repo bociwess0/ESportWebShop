@@ -1,19 +1,23 @@
 import classes from './HeaderCart.module.css';
 import cartImage from '../../../../Assets/shopping-cart.png';
+import { useSelector } from 'react-redux';
+import { RootStateProducts } from '../../../../Redux/productSlice';
 
 
 function HeaderCart() {
+
+    const totalProducts = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
+    const totalPrice = useSelector((state: RootStateProducts) => state.cartActions.totalPrice);
+
     return(
         <div className={classes.headerCart}>
             <div className={classes.imgWrapper}>
-                <a href="#">
-                  <img src={cartImage} alt="" />
-                </a>
+                <img src={cartImage} alt="" />
             </div>
-            <div className={classes.cartContent}>
-                <div className={classes.productsInCart}>2 products</div>
-                <div className={classes.totalPrice}>20000€</div>
-            </div>
+            {totalProducts > 0  &&  <div className={classes.cartContent}>
+                                        <div className={classes.productsInCart}>{`${totalProducts} products`}</div>
+                                        <div className={classes.totalPrice}>{`${totalPrice}€`}</div>
+                                    </div>}
         </div>
     )
 }
