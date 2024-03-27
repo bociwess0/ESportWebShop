@@ -1,1 +1,32 @@
 
+.cartItemsWrapper {
+    max-height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 15px;
+}
+
+/* Scroll width */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 50%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1D1E21;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #393a3a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1D1E21;
+}
+
+.autocomplete-categories-and-brands{
+    background: #F8F8F8;
+}

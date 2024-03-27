@@ -8,9 +8,12 @@ function CartTotal() {
     const totalPrice = useSelector((state: RootStateProducts) => state.cartActions.totalPrice);
 
     return(
-        <div className={classes.cartTotalWrapper}>
-            <div className={classes.text}>Order total:</div>
-            <div className={classes.totalPrice}>{`${totalPrice}€`}</div>
+        <div>
+            <div className={classes.cartTotalWrapper}>
+                <div className={classes.text}>Order total:</div>
+                <div className={classes.totalPrice}>{`${totalPrice}€`}</div>
+            </div>
+            <button className={classes.checkoutBtn}>Secure Checkout</button>
         </div>
     )
 }
