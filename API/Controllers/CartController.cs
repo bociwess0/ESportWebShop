@@ -63,7 +63,18 @@ namespace API.Controllers
 
         [HttpDelete]
         public async Task<ActionResult> RemoveFromCart(int productId, int quantity) {
-            return Ok();
+
+            var cart = await RetrieveCart();
+
+            if(cart == null) return null;
+
+            cart.RemoveCartItem(productId, quantity);
+
+            var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
+
+            if(result) return Ok();
+
+            return null;
         }
 
         private async Task<Cart> RetrieveCart()
