@@ -23,23 +23,53 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<Cart>> GetCart()
         {
-            var cart = await _context.Carts
-            .Include(i => i.Products)
-            .ThenInclude(p => p.Product)
-            .FirstOrDefaultAsync(x => x.UserId == Request.Cookies["userId"]);
+            var cart = await RetrieveCart();
 
             return cart;
 
         }
 
-        [HttpPost]
+        [HttpPost] // api/Cart?productId=3&quantity=2
         public async Task<ActionResult> AddToCart(int productId, int quantity) {
-            return StatusCode(201);
+            var cart = await RetrieveCart();
+
+            if(cart == null) cart = CreateCart();
+
+            var product = await _context.Products.FindAsync(productId);
+            
+            cart.AddCartItem(product, quantity);
+
+            var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
+
+            if(result) return StatusCode(201);
+
+            return null;
+            
         }
+
 
         [HttpDelete]
         public async Task<ActionResult> RemoveFromCart(int productId, int quantity) {
             return Ok();
+        }
+
+        private async Task<Cart> RetrieveCart()
+        {
+            return await _context.Carts
+                        .Include(i => i.Products)
+                        .ThenInclude(p => p.Product)
+                        .FirstOrDefaultAsync(x => x.UserId == Request.Cookies["userId"]);
+        }
+
+        private Cart CreateCart()
+        {
+            var userId = Guid.NewGuid().ToString(); //random id
+            var cookieOptions = new CookieOptions{IsEssential = true, Expires = DateTime.Now.AddDays(30)};
+            Response.Cookies.Append("userId", userId, cookieOptions);
+            var cart = new Cart{UserId= userId};
+            _context.Carts.Add(cart);
+
+            return cart;
         }
 
     }
