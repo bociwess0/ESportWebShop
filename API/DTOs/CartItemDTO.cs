@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class Product
+    public class CartItemDTO
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
 
         public string Name { get; set; }
 
@@ -21,6 +21,7 @@ namespace API.Entities
 
         public string Brand { get; set; }   
 
-        public int QuantityInStock { get; set; }
+        public int Quantity { get; set; }
+
     }
 }

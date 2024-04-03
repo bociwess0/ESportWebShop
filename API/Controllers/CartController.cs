@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data.Migrations;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,11 +22,23 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<Cart>> GetCart()
+        public async Task<ActionResult<CartDTO>> GetCart()
         {
             var cart = await RetrieveCart();
 
-            return cart;
+            return new CartDTO{
+                Id = cart.Id,
+                UserId = cart.UserId,
+                Products = cart.Products.Select(product => new CartItemDTO {
+                    ProductId = product.Id,
+                    Name = product.Product.Name,
+                    Description = product.Product.Description,
+                    Price = product.Product.Price,
+                    Type = product.Product.Type,
+                    Brand = product.Product.Brand,
+                    Quantity = product.Quantity
+                }).ToList()
+            };
 
         }
 
