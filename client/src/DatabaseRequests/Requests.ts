@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { Product } from "../Interfaces/Interface";
+import { error, log } from "console";
 
 // Define the type for the product object
 
@@ -18,4 +19,14 @@ export async function fetchProducts(): Promise<Product[]> {
     }    
 
     return products;
+}
+
+export async function addTocartDB(product:Product) {
+    axios.post(`${URL}Cart?productId=${product.id}&quantity=1`, {})
+    .then(response => {
+        console.log(response.data);
+      })
+    .catch(error => {
+        console.log(error);
+    })
 }

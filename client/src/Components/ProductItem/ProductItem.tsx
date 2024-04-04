@@ -4,6 +4,7 @@ import { Product } from "../../Interfaces/Interface";
 import productImage from '../../Assets/headphones.png';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/cartSlice";
+import { addTocartDB } from "../../DatabaseRequests/Requests";
 
 
 interface Props {
@@ -16,6 +17,7 @@ function ProductItem({product}: Props) {
 
     const addToCartHandler = () => {
         dispatch(addToCart({product: product}));
+        addTocartDB(product);
     }
 
     return(
