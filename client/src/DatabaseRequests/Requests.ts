@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { Product } from "../Interfaces/Interface";
+import { Cart, Product } from "../Interfaces/Interface";
 import { error, log } from "console";
 
 // Define the type for the product object
@@ -20,6 +20,20 @@ export async function fetchProducts(): Promise<Product[]> {
     }    
 
     return products;
+}
+
+export async function fetchCart() {
+    const response: AxiosResponse<any> = await axios.get("Cart");
+    var cart = {};
+
+    for(const key in response.data) {
+        if (Object.prototype.hasOwnProperty.call(response.data, key)) {
+            cart = response.data[key];
+        }
+    }
+
+    return cart;
+
 }
 
 export async function addTocartDB(product:Product, quantity: number) {

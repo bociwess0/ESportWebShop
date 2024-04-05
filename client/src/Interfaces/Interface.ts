@@ -9,3 +9,9 @@ export interface Product {
     quantityInStock: number,
     quantityInCart: number
 }
+
+export interface Cart {
+    id: number,
+    userId: string,
+    products: Product[];
+}

@@ -1,5 +1,5 @@
 import { PayloadAction, combineReducers, createSlice } from "@reduxjs/toolkit";
-import { Product } from "../Interfaces/Interface";
+import { Cart, Product } from "../Interfaces/Interface";
 
 
 const initialState: { products: Product[], totalProductsInCart:number, totalPrice: number} = {
@@ -12,6 +12,9 @@ const productSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        retrieveCart: (state, action:PayloadAction<{cart: Cart}>) => {
+            state.products = action.payload.cart.products;
+        },
         addToCart: (state, action: PayloadAction<{product: Product}>) => {
 
             let addedProduct = action.payload.product;
