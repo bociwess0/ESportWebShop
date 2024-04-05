@@ -4,11 +4,12 @@ import { error, log } from "console";
 
 // Define the type for the product object
 
-const URL = "http://localhost:5164/api/";
+axios.defaults.baseURL = "http://localhost:5164/api/";
+axios.defaults.withCredentials = true;
 
 
 export async function fetchProducts(): Promise<Product[]> {
-    const response: AxiosResponse<any> = await axios.get(URL + "Products");
+    const response: AxiosResponse<any> = await axios.get("Products");
     const products: Product[] = [];
 
     for (const key in response.data) {
@@ -21,8 +22,19 @@ export async function fetchProducts(): Promise<Product[]> {
     return products;
 }
 
-export async function addTocartDB(product:Product) {
-    axios.post(`${URL}Cart?productId=${product.id}&quantity=1`, {})
+export async function addTocartDB(product:Product, quantity: number) {
+    
+    axios.post(`Cart?productId=${product.id}&quantity=${quantity}`, {})
+    .then(response => {
+        console.log(response.data);
+      })
+    .catch(error => {
+        console.log(error);
+    })
+}
+
+export async function removeFromCartDB(product:Product) {
+    axios.delete(`Cart?productId=${product.id}&quantity=1`)
     .then(response => {
         console.log(response.data);
       })

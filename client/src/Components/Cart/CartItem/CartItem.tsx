@@ -3,6 +3,7 @@ import productImage from "../../../Assets/headphones.png";
 import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
 import { changeQuantity, removeFromCart } from "../../../Redux/cartSlice";
+import { removeFromCartDB } from "../../../DatabaseRequests/Requests";
 
 interface Props {
     product: Product;
@@ -14,6 +15,8 @@ function CartItem({product}: Props) {
 
     const removeFromCartHandler = () => {
         dispatch(removeFromCart({item: product}))
+        removeFromCartDB(product);
+
     }
 
     const changeProductQuantityHandler = (value: number, action: string, product: Product) => {

@@ -21,29 +21,17 @@ namespace API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet (Name = "GetCart")]
         public async Task<ActionResult<CartDTO>> GetCart()
         {
             var cart = await RetrieveCart();
-
-            return new CartDTO{
-                Id = cart.Id,
-                UserId = cart.UserId,
-                Products = cart.Products.Select(product => new CartItemDTO {
-                    ProductId = product.Id,
-                    Name = product.Product.Name,
-                    Description = product.Product.Description,
-                    Price = product.Product.Price,
-                    Type = product.Product.Type,
-                    Brand = product.Product.Brand,
-                    Quantity = product.Quantity
-                }).ToList()
-            };
+            return MapCartDto(cart);
 
         }
 
+
         [HttpPost] // api/Cart?productId=3&quantity=2
-        public async Task<ActionResult> AddToCart(int productId, int quantity) {
+        public async Task<ActionResult<CartDTO>> AddToCart(int productId, int quantity) {
             var cart = await RetrieveCart();
 
             if(cart == null) cart = CreateCart();
@@ -54,7 +42,7 @@ namespace API.Controllers
 
             var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
 
-            if(result) return StatusCode(201);
+            if(result) return CreatedAtRoute("GetCart", MapCartDto(cart));
 
             return null;
             
@@ -62,7 +50,7 @@ namespace API.Controllers
 
 
         [HttpDelete]
-        public async Task<ActionResult> RemoveFromCart(int productId, int quantity) {
+        public async Task<ActionResult<CartDTO>> RemoveFromCart(int productId, int quantity) {
 
             var cart = await RetrieveCart();
 
@@ -94,6 +82,25 @@ namespace API.Controllers
             _context.Carts.Add(cart);
 
             return cart;
+        }
+
+        private CartDTO MapCartDto(Cart cart)
+        {
+            return new CartDTO
+            {
+                Id = cart.Id,
+                UserId = cart.UserId,
+                Products = cart.Products.Select(product => new CartItemDTO
+                {
+                    ProductId = product.Product.Id,
+                    Name = product.Product.Name,
+                    Description = product.Product.Description,
+                    Price = product.Product.Price,
+                    Type = product.Product.Type,
+                    Brand = product.Product.Brand,
+                    Quantity = product.Quantity
+                }).ToList()
+            };
         }
 
     }

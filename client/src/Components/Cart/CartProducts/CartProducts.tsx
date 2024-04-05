@@ -13,7 +13,6 @@ function CartProducts() {
 
     return (
         <div className="cartProducts">
-            <p>TTTT</p>
             <Container>
                 <div className={classes.cartItemsWrapper}>
                     {products.map((item: Product) => <CartItem product={item} key={item.id}/>)}
