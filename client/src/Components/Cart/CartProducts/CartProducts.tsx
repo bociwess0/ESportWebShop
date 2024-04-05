@@ -1,15 +1,28 @@
 import { Container } from "react-bootstrap";
 import CartItem from "../CartItem/CartItem";
-import { useSelector } from "react-redux";
-import { Product } from "../../../Interfaces/Interface";
+import { useDispatch, useSelector } from "react-redux";
+import { Cart, Product } from "../../../Interfaces/Interface";
 import { RootStateProducts } from "../../../Redux/productSlice";
 import CartTotal from "../CartTotal/CartTotal";
 import classes from './CartProducts.module.css';
+import { useEffect } from "react";
+import { fetchCart } from "../../../DatabaseRequests/Requests";
+import { retrieveCart } from "../../../Redux/cartSlice";
 
 function CartProducts() {
 
+    const dispatch = useDispatch();
     const products: Product[] = useSelector((state: RootStateProducts) => state.cartActions.products);
     const totalProducts : number = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
+
+    useEffect(() => {
+        async function getProductsInCart() {
+            let cart: Cart = await fetchCart();
+            dispatch(retrieveCart({cart: cart}));
+        }
+
+        getProductsInCart();
+    }, [])
 
     return (
         <div className="cartProducts">

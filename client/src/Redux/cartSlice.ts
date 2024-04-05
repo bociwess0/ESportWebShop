@@ -8,12 +8,20 @@ const initialState: { products: Product[], totalProductsInCart:number, totalPric
     totalPrice: 0
 }
 
-const productSlice = createSlice({
+const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
         retrieveCart: (state, action:PayloadAction<{cart: Cart}>) => {
             state.products = action.payload.cart.products;
+            state.totalProductsInCart = state.products.length;
+            
+            state.totalPrice = 0;
+            state.products.forEach((item) => {
+                state.totalPrice += item.price;
+            })
+            
+
         },
         addToCart: (state, action: PayloadAction<{product: Product}>) => {
 
@@ -21,12 +29,12 @@ const productSlice = createSlice({
             let addedProductIndex = state.products.findIndex((item: Product) => item.id === addedProduct.id);
 
             if(addedProductIndex !== -1) {
-                state.products[addedProductIndex].quantityInCart += 1;
+                state.products[addedProductIndex].quantity += 1;
                 state.totalPrice+=addedProduct.price;
             } else {
                 let newProduct:Product = {
                     ...addedProduct,
-                    quantityInCart: 1
+                    quantity: 1
                 }
                 state.products.push(newProduct);
                 state.totalPrice+=newProduct.price;
@@ -38,8 +46,8 @@ const productSlice = createSlice({
             let filteredProducts: Product[] = state.products.filter((item: Product) => item.id !== action.payload.item.id);
 
             state.products = filteredProducts;
-            state.totalProductsInCart-= action.payload.item.quantityInCart;
-            state.totalPrice-= action.payload.item.price * action.payload.item.quantityInCart;
+            state.totalProductsInCart-= action.payload.item.quantity;
+            state.totalPrice-= action.payload.item.price * action.payload.item.quantity;
         },
         changeProductQuantity: (state, action: PayloadAction<{value: number, action: string, product: Product}>) => {
 
@@ -48,12 +56,12 @@ const productSlice = createSlice({
 
             switch(action.payload.action) {
                 case "increase": {
-                    foundedProduct.quantityInCart++;
+                    foundedProduct.quantity++;
                     state.totalProductsInCart++;
                     state.totalPrice+=action.payload.product.price;
                 } break;
                 case "reduce": {
-                    foundedProduct.quantityInCart--;
+                    foundedProduct.quantity--;
                     state.totalProductsInCart--;
                     state.totalPrice-=action.payload.product.price;
                 } break;
@@ -63,12 +71,13 @@ const productSlice = createSlice({
     
 })
 
-const cartReducer = productSlice.reducer;
+const cartReducer = cartSlice.reducer;
 const rootReducer = combineReducers({});
 
-export const addToCart = productSlice.actions.addToCart;
-export const removeFromCart = productSlice.actions.removeFromCart;
-export const changeQuantity = productSlice.actions.changeProductQuantity
+export const retrieveCart = cartSlice.actions.retrieveCart;
+export const addToCart = cartSlice.actions.addToCart;
+export const removeFromCart = cartSlice.actions.removeFromCart;
+export const changeQuantity = cartSlice.actions.changeProductQuantity
 export type RootStateProducts = ReturnType<typeof rootReducer>;
 
 export default cartReducer;

@@ -22,18 +22,16 @@ export async function fetchProducts(): Promise<Product[]> {
     return products;
 }
 
-export async function fetchCart() {
-    const response: AxiosResponse<any> = await axios.get("Cart");
-    var cart = {};
+export async function fetchCart(): Promise<Cart> {
+    try {
+        const response: AxiosResponse<Cart> = await axios.get<Cart>("Cart");
 
-    for(const key in response.data) {
-        if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-            cart = response.data[key];
-        }
+        return response.data;
+    } catch (error) {
+        // Handle errors here
+        console.error("Error fetching cart:", error);
+        throw error;
     }
-
-    return cart;
-
 }
 
 export async function addTocartDB(product:Product, quantity: number) {

@@ -7,7 +7,7 @@ export interface Product {
     type: string,
     brand: string,
     quantityInStock: number,
-    quantityInCart: number
+    quantity: number
 }
 
 export interface Cart {

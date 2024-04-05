@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import ProductList from "../Components/Layout/ProductList/ProductList";
-import { Product } from "../Interfaces/Interface";
+import { Cart, Product } from "../Interfaces/Interface";
 import { useDispatch } from "react-redux";
-import { fetchProducts } from "../DatabaseRequests/Requests";
+import { fetchCart, fetchProducts } from "../DatabaseRequests/Requests";
 import { importProductsFromDatabase } from "../Redux/productSlice";
 import Header from "../Components/Layout/Header/Header";
 import BannerImage from "../Components/BannerImage/BannerImage";
+import { retrieveCart } from "../Redux/cartSlice";
 
 
 function Products() {
@@ -19,7 +20,13 @@ function Products() {
         setProducts(fetchedProducts);
         dispatch(importProductsFromDatabase({ products: fetchedProducts }));
       }
-  
+
+      async function getProductsInCart() {
+        let cart: Cart = await fetchCart();
+        dispatch(retrieveCart({cart: cart}));
+    }
+
+      getProductsInCart();
       getProducts();
 
     }, [])

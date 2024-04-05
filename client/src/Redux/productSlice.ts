@@ -17,7 +17,7 @@ const productSlice = createSlice ({
             action.payload.products.forEach((item: Product) => {
                 formatedProducts.push({
                     ...item,
-                    quantityInCart: 0
+                    quantity: 0
                 })
             })
 

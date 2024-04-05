@@ -37,8 +37,8 @@ function CartItem({product}: Props) {
             </div>
             <div className={classes.quantityWrapper}>
                 <div className={classes.quantityText}>Quantity:</div>
-                <button className={classes.minus} disabled={product.quantityInCart === 1 ? true : false} onClick={() => changeProductQuantityHandler(1, "reduce", product)} >—</button>
-                <input type="number" readOnly className={classes.number} value={product.quantityInCart} />
+                <button className={classes.minus} disabled={product.quantity === 1 ? true : false} onClick={() => changeProductQuantityHandler(1, "reduce", product)} >—</button>
+                <input type="number" readOnly className={classes.number} value={product.quantity} />
                 <button className={classes.plus} onClick={() => changeProductQuantityHandler(1, "increase", product)}>+</button>
             </div>
             <div className={classes.price}>{`${product.price}€`}</div>
