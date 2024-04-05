@@ -50,7 +50,7 @@ namespace API.Controllers
 
 
         [HttpDelete]
-        public async Task<ActionResult<CartDTO>> RemoveFromCart(int productId, int quantity) {
+        public async Task<ActionResult> RemoveFromCart(int productId, int quantity) {
 
             var cart = await RetrieveCart();
 

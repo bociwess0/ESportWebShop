@@ -12,7 +12,7 @@ function ProductList() {
     return(
         <Container>
             <Row>
-                {products.map((item) => <ProductItem product={item} key={item.id} />)}
+                {products.map((item) => <ProductItem product={item} key={item.productId} />)}
             </Row>
         </Container>
     )

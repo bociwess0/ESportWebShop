@@ -18,6 +18,7 @@ function CartProducts() {
     useEffect(() => {
         async function getProductsInCart() {
             let cart: Cart = await fetchCart();
+            
             dispatch(retrieveCart({cart: cart}));
         }
 
@@ -28,7 +29,7 @@ function CartProducts() {
         <div className="cartProducts">
             <Container>
                 <div className={classes.cartItemsWrapper}>
-                    {products.map((item: Product) => <CartItem product={item} key={item.id}/>)}
+                    {products.map((item: Product) => <CartItem product={item} key={item.productId}/>)}
                 </div>
                 {totalProducts > 0 && <CartTotal />}
                 {totalProducts === 0 && <h3 style={{color: "#ffffff"}} >Cart is empty!</h3>}
