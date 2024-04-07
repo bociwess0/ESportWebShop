@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
 import CheckoutNav from "../Components/Cart/CheckoutNav/CheckoutNav";
 import { Container } from "react-bootstrap";
 import { useEffect } from "react";
+import StepButtons from "../Components/Cart/StepButtons/StepButtons";
 
 function Cart() {
 
@@ -19,6 +20,7 @@ function Cart() {
         <Container>
             <CheckoutNav />
             <Outlet />
+            <StepButtons />
         </Container>
     )
 }

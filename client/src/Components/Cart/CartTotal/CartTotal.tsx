@@ -13,7 +13,6 @@ function CartTotal() {
                 <div className={classes.text}>Order total:</div>
                 <div className={classes.totalPrice}>{`${totalPrice}€`}</div>
             </div>
-            <button className={classes.checkoutBtn}>Secure Checkout</button>
         </div>
     )
 }

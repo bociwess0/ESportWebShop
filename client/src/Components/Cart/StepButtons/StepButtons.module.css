@@ -1,0 +1,21 @@
+.stepButtonsWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 40px 0;
+    border-top: 1px solid #47494c;
+}
+
+.stepButton {
+    padding: 10px 40px;
+    text-transform: uppercase;
+    background: linear-gradient(#FB2740, #F3230F);
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    float: right;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+}
