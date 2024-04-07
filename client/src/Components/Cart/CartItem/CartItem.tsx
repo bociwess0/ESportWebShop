@@ -14,7 +14,7 @@ function CartItem({product}: Props) {
     const dispatch = useDispatch();
 
     const removeFromCartHandler = () => {
-        removeFromCartDB(product.productId, product.quantity);
+        removeFromCartDB(product.id, product.quantity);
         dispatch(removeFromCart({item: product}));
     }
 

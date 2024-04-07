@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Products from "../Pages/Products";
+import Cart from "../Pages/Cart";
 import CartProducts from "../Components/Cart/CartProducts/CartProducts";
 
 export const router = createBrowserRouter([
@@ -11,13 +12,10 @@ export const router = createBrowserRouter([
             { path: 'products', element: <Products /> },
             { 
                 path: 'cart',
-                element: <CartProducts /> , 
+                element: <Cart /> , 
                 children: [
-                    { 
-                        path: 'address', 
-                        element: <CartProducts />
-                    }
-                ] // Automatically redirect to cart/products
+                    {path: "productsInCart", element: <CartProducts /> }
+                ]
             },
         
         ]

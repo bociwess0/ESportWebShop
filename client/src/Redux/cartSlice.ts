@@ -26,7 +26,7 @@ const cartSlice = createSlice({
         addToCart: (state, action: PayloadAction<{product: Product}>) => {
 
             let addedProduct = action.payload.product;
-            let addedProductIndex = state.products.findIndex((item: Product) => item.productId === addedProduct.productId);
+            let addedProductIndex = state.products.findIndex((item: Product) => item.id === addedProduct.id);
 
             if(addedProductIndex !== -1) {
                 state.products[addedProductIndex].quantity += 1;
@@ -43,7 +43,7 @@ const cartSlice = createSlice({
 
         },
         removeFromCart: (state, action: PayloadAction<{item: Product}>) => {
-            let filteredProducts: Product[] = state.products.filter((item: Product) => item.productId !== action.payload.item.productId);
+            let filteredProducts: Product[] = state.products.filter((item: Product) => item.id !== action.payload.item.id);
 
             state.products = filteredProducts;
             state.totalProductsInCart-= action.payload.item.quantity;
@@ -51,7 +51,7 @@ const cartSlice = createSlice({
         },
         changeProductQuantity: (state, action: PayloadAction<{value: number, action: string, product: Product}>) => {
 
-            let foundedProductIndex = state.products.findIndex((item: Product) => item.productId === action.payload.product.productId);
+            let foundedProductIndex = state.products.findIndex((item: Product) => item.id === action.payload.product.id);
             let foundedProduct = state.products[foundedProductIndex];
 
             switch(action.payload.action) {

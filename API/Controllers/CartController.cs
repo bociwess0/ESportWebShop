@@ -92,7 +92,7 @@ namespace API.Controllers
                 UserId = cart.UserId,
                 Products = cart.Products.Select(product => new CartItemDTO
                 {
-                    ProductId = product.Product.Id,
+                    Id = product.Product.Id,
                     Name = product.Product.Name,
                     Description = product.Product.Description,
                     Price = product.Product.Price,

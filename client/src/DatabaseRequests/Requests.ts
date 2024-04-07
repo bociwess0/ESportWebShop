@@ -36,7 +36,7 @@ export async function fetchCart(): Promise<Cart> {
 
 export async function addTocartDB(product:Product, quantity: number) {
     
-    axios.post(`Cart?productId=${product.productId}&quantity=${quantity}`, {})
+    axios.post(`Cart?productId=${product.id}&quantity=${quantity}`, {})
     .then(response => {
         console.log(response.data);
       })
@@ -48,7 +48,7 @@ export async function addTocartDB(product:Product, quantity: number) {
 export async function removeFromCartDB(productId:number, quantity:number) {
     axios.delete(`Cart?productId=${productId}&quantity=${quantity}`)
     .then(response => {
-        console.log(response.data);
+        console.log(`Product with id: ${productId} is successfully deleted from cart!`);
       })
     .catch(error => {
         console.log(error);

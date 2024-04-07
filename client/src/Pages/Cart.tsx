@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
-import CartProducts from "../Components/Cart/CartProducts/CartProducts";
+import CheckoutNav from "../Components/Cart/CheckoutNav/CheckoutNav";
+import { Container } from "react-bootstrap";
 
 function Cart() {
     return(
-        <div>
+        <Container>
+            <CheckoutNav />
             <Outlet />
-        </div>
+        </Container>
     )
 }
 
