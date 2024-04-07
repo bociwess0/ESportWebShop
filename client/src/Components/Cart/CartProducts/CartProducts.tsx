@@ -32,6 +32,7 @@ function CartProducts() {
                 </div>
                 {totalProducts > 0 && <CartTotal />}
                 {totalProducts === 0 && <h3 style={{color: "#ffffff"}} >Cart is empty!</h3>}
+
         </div>
     )
 }
