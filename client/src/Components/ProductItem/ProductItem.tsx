@@ -1,7 +1,7 @@
 import { Col } from "react-bootstrap";
 import classes from './ProductItem.module.css';
 import { Product } from "../../Interfaces/Interface";
-import productImage from '../../Assets/headphones.png';
+import productImage from '../../Assets/headphones.webp';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/cartSlice";
 import { addTocartDB } from "../../DatabaseRequests/Requests";

@@ -4,4 +4,16 @@
     align-items: center;
     width: 100%;
     margin: 20px 0 30px;
+    position: relative;
+}
+
+.checkoutNavWrapper::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #393a3a;
+    z-index: 0;
 }

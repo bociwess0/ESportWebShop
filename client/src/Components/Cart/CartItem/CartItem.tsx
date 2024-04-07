@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import productImage from "../../../Assets/headphones.png";
+import productImage from "../../../Assets/headphones.webp";
 import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
 import { changeQuantity, removeFromCart } from "../../../Redux/cartSlice";

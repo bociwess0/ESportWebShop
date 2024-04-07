@@ -1,8 +1,13 @@
 .navItem {
     display: flex;
     align-items: center;
+    position: relative;
     gap: 10px;
     color: #ffffff;
+    z-index: 1;
+    background: #151718;
+    padding: 0 20px;
+    text-decoration: none;
 }
 
 .number {
@@ -12,5 +17,6 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background: #F8252C;
+    border: none;
+    color: #ffffff;
 }
