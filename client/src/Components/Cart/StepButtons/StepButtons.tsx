@@ -20,12 +20,6 @@ function StepButtons() {
                 setNext('/cart/address');
                 setJustifyContent('end')
             } break;
-
-            case '/cart/address': {
-                setPrev('/cart/productsInCart');
-                setNext('/cart/checkout');
-                setJustifyContent('space-between')
-            } break;
             case '/cart/checkout': {
                 setPrev('/cart/address');
                 setJustifyContent('start');

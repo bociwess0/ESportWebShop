@@ -8,6 +8,7 @@ import classes from './CartProducts.module.css';
 import { useEffect } from "react";
 import { fetchCart } from "../../../DatabaseRequests/Requests";
 import { retrieveCart } from "../../../Redux/cartSlice";
+import StepButtons from "../StepButtons/StepButtons";
 
 function CartProducts() {
 
@@ -32,7 +33,7 @@ function CartProducts() {
                 </div>
                 {totalProducts > 0 && <CartTotal />}
                 {totalProducts === 0 && <h3 style={{color: "#ffffff"}} >Cart is empty!</h3>}
-
+                <StepButtons />
         </div>
     )
 }

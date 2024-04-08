@@ -20,7 +20,6 @@ function Cart() {
         <Container>
             <CheckoutNav />
             <Outlet />
-            <StepButtons />
         </Container>
     )
 }
