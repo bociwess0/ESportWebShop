@@ -3,6 +3,7 @@ import StepButtons from "../StepButtons/StepButtons";
 import CheckoutItems from "./CheckoutItems/CheckoutItems";
 import { useSelector } from "react-redux";
 import { RootStateProducts } from "../../../Redux/cartSlice";
+import CheckoutUserInfo from "./CheckoutUserInfo/CheckoutUserInfo";
 
 function CheckoutInfo() {
 
@@ -15,7 +16,7 @@ function CheckoutInfo() {
                     <CheckoutItems products={produstInCart} />
                 </Col>
                 <Col xs={12} sm={6}>
-                    
+                    <CheckoutUserInfo />
                 </Col>
             </Row>
             <StepButtons />

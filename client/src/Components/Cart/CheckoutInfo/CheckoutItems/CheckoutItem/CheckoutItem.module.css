@@ -25,13 +25,13 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    min-width: 150px;
+    min-width: 130px;
     padding: 10px;
     background: #ffffff;
 }
 
 .checkoutItem .imgWrapper img {
-    max-width: 90px;
+    max-width: 80px;
 }
 
 .checkoutItem .price  {
