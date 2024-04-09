@@ -10,7 +10,7 @@ interface Props {
 
 function CheckoutItem({product} : Props) {
     return(
-        <div className={classes.cartItem}>
+        <div className={classes.checkoutItem}>
             <div className={classes.imgAndPrice}>
                 <div className={classes.imgWrapper}>
                     <img src={productImage} alt="" />

@@ -1,6 +1,17 @@
+import { Product } from "../../../../Interfaces/Interface";
+import CheckoutItem from "./CheckoutItem/CheckoutItem";
+import classes from './CheckoutItems.module.css';
 
-function CheckoutItems() {
+interface Props {
+    products: Product [];
+}
 
+function CheckoutItems({products} : Props) {
+    return(
+        <div className={classes.checkoutItemsWrapper}>
+            {products.map((item) => <CheckoutItem product={item} />)}
+        </div>
+    )
 }
 
 export default CheckoutItems;
