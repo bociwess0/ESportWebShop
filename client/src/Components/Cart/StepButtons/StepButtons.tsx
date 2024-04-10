@@ -22,7 +22,7 @@ function StepButtons() {
             } break;
             case '/cart/checkout': {
                 setPrev('/cart/address');
-                setJustifyContent('start');
+                setJustifyContent('space-between');
             }
         }
     }, [location])
@@ -32,6 +32,7 @@ function StepButtons() {
         <div className={classes.stepButtonsWrapper} style={{justifyContent: justifyContent}}>
             {!location.pathname.includes('productsInCart') && <NavLink to={prev} className={`${classes.stepButton} prevButton`}>Prev Step</NavLink>}
             {!location.pathname.includes('checkout') && <NavLink to={next} className={`${classes.stepButton} nextButton`}>Next Step</NavLink>}
+            {location.pathname.includes('checkout') && <NavLink to={next} className={`${classes.stepButton} nextButton`}>Secure Checkout</NavLink>}
         </div>
     )
 }
