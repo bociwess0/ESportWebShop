@@ -5,6 +5,7 @@ import productImage from '../../Assets/headphones.webp';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/cartSlice";
 import { addTocartDB } from "../../DatabaseRequests/Requests";
+import { NavLink } from "react-router-dom";
 
 
 interface Props {
@@ -23,12 +24,12 @@ function ProductItem({product}: Props) {
     return(
         <Col xs={6} sm={3}>
             <div className={classes.productItem}>
-                <div className={classes.imgWrapper}>
+                <NavLink style={{textDecoration: "none", color: "#000000"}} to={`/products/${product.id}`} className={classes.imgWrapper}>
                     <div className={classes.productImg}>
                         <img src={productImage} alt="" />
                     </div>
                     <div className={classes.description}>{product.name}</div>
-                </div>
+                </NavLink>
                 <div className={classes.priceWrapper}>
                     <button onClick={addToCartHandler} className={classes.learnMoreButton}>Add To Cart</button>
                     <div className={classes.price}>{product.price}</div>
