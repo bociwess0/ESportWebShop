@@ -26,7 +26,20 @@ export async function fetchCart(): Promise<Cart> {
     try {
         const response: AxiosResponse<Cart> = await axios.get<Cart>("Cart");
 
+        console.log(response);
+        
+
+        if (!response.data || Object.keys(response.data).length === 0) {
+            // Return an empty cart object or any other default value
+            return {
+                id: 0, // Provide a default id
+                userId: "", // Provide a default userId
+                products: [] // Empty array of products
+            }; 
+        }
+
         return response.data;
+
     } catch (error) {
         // Handle errors here
         console.error("Error fetching cart:", error);
