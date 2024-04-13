@@ -15,7 +15,7 @@ function PopupModal({buttonText, message, action} : Props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleAction = () => {
-        // action();
+        action();
         setShow(false);
     }
 
