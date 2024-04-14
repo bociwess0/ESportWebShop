@@ -6,6 +6,7 @@ import CartProducts from "../Components/Cart/CartProducts/CartProducts";
 import Address from "../Components/Cart/Address/Address";
 import CheckoutInfo from "../Components/Cart/CheckoutInfo/CheckoutInfo";
 import OrderResult from "../Pages/OrderResult";
+import ProductDetails from "../Pages/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             { path: 'products', element: <Products /> },
+            { path: 'products/:id', element: <ProductDetails /> },
             { 
                 path: 'cart',
                 element: <Cart /> , 
@@ -23,7 +25,7 @@ export const router = createBrowserRouter([
                 ]
             },
             {path: 'orderResult', element: <OrderResult />},
-            
+
         ]
     }
 ])

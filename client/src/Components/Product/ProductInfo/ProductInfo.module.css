@@ -1,0 +1,18 @@
+.productInfoWrapper {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    color: hsl(358, 67%, 58%);
+}
+
+.description {
+    font-style: italic;
+}
+
+.price {
+    font-size: 25px;
+}

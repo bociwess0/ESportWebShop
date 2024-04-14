@@ -45,6 +45,21 @@ export async function fetchProducts(): Promise<Product[]> {
     return products;
 }
 
+export async function fetchProductById(id: number) : Promise<Product> {
+    
+    try {
+        const response: AxiosResponse<any> = await axios.get(`Products/${id}`);
+
+        return response.data;
+
+    } catch (error) {
+        console.log("Error fetching product data!");
+        throw error;
+        
+    }
+
+}
+
 export async function fetchCart(): Promise<Cart> {
 
     if (checkCookie()) {
