@@ -1,0 +1,47 @@
+.quantityWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantityText {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.minus {
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 5px 20px;
+    font-weight: 600;
+}
+
+.number {
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    background: #ffffff;
+    padding: 5px;
+    font-weight: 600;
+    max-width: 80px;
+    text-align: center;
+}
+
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.plus {
+    border-radius: 20px;
+    border: 2px solid #F8252C;
+    background: #F8252C;
+    color: #ffffff;
+    padding: 5px 20px;
+    font-weight: 600;
+}

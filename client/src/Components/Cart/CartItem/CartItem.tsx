@@ -2,8 +2,9 @@ import { useDispatch } from "react-redux";
 import productImage from "../../../Assets/headphones.webp";
 import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
-import { changeQuantity, removeFromCart } from "../../../Redux/cartSlice";
+import { removeFromCart } from "../../../Redux/cartSlice";
 import { removeFromCartDB } from "../../../DatabaseRequests/Requests";
+import ChooseQuantity from "../../Product/ChooseQuantity/ChooseQuantity";
 
 interface Props {
     product: Product;
@@ -18,11 +19,6 @@ function CartItem({product}: Props) {
         dispatch(removeFromCart({item: product}));
     }
 
-    const changeProductQuantityHandler = (value: number, action: string, product: Product) => {
-        dispatch(changeQuantity({value: value, action: action, product: product}));
-    }
-
-
     return(
         <div className={classes.cartItem}>
             <div className={classes.imgAndPrice}>
@@ -34,12 +30,7 @@ function CartItem({product}: Props) {
                     <div className={classes.name}>{product.name}</div>
                 </div>
             </div>
-            <div className={classes.quantityWrapper}>
-                <div className={classes.quantityText}>Quantity:</div>
-                <button className={classes.minus} disabled={product.quantity === 1 ? true : false} onClick={() => changeProductQuantityHandler(1, "reduce", product)} >—</button>
-                <input type="number" readOnly className={classes.number} value={product.quantity} />
-                <button className={classes.plus} onClick={() => changeProductQuantityHandler(1, "increase", product)}>+</button>
-            </div>
+            <ChooseQuantity product={product} cartItem={true} />
             <div className={classes.price}>{`${product.price}€`}</div>
             <div className={classes.btnWrapper}>
                 <button onClick={removeFromCartHandler}>Remove</button>
