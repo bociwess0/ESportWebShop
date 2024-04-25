@@ -5,7 +5,7 @@ import classes from './PopupModal.module.css';
 interface Props {
     buttonText: string,
     message: string,
-    action: Function
+    action: (() => void) | boolean;
 }
 
 function PopupModal({buttonText, message, action} : Props) {
@@ -15,7 +15,7 @@ function PopupModal({buttonText, message, action} : Props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleAction = () => {
-        action();
+        (action as () => void)();
         setShow(false);
     }
 

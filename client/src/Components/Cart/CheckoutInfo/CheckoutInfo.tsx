@@ -1,13 +1,29 @@
 import { Col, Container, Row } from "react-bootstrap";
 import StepButtons from "../StepButtons/StepButtons";
 import CheckoutItems from "./CheckoutItems/CheckoutItems";
-import { useSelector } from "react-redux";
-import { RootStateProducts } from "../../../Redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStateProducts, retrieveCart } from "../../../Redux/cartSlice";
 import CheckoutUserInfo from "./CheckoutUserInfo/CheckoutUserInfo";
+import { Cart, Product } from "../../../Interfaces/Interface";
+import { useEffect } from "react";
+import { fetchCart } from "../../../DatabaseRequests/Requests";
 
 function CheckoutInfo() {
 
-    const produstInCart = useSelector((state: RootStateProducts) => state.cartActions.products);
+    const produstInCart: Product[] = useSelector((state: RootStateProducts) => state.cartActions.products);
+
+    const dispatch = useDispatch();
+    const totalProducts : number = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
+
+    useEffect(() => {
+        async function getProductsInCart() {
+            let cart: Cart = await fetchCart();
+            
+            dispatch(retrieveCart({cart: cart}));
+        }
+
+        getProductsInCart();
+    }, [])    
 
     return(
         <Container>

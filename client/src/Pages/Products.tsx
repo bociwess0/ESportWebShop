@@ -6,7 +6,7 @@ import { fetchCart, fetchProducts } from "../DatabaseRequests/Requests";
 import { importProductsFromDatabase } from "../Redux/productSlice";
 import Header from "../Components/Layout/Header/Header";
 import BannerImage from "../Components/BannerImage/BannerImage";
-import { retrieveCart } from "../Redux/cartSlice";
+import { confirmOrder, retrieveCart } from "../Redux/cartSlice";
 
 
 function Products() {
@@ -28,6 +28,7 @@ function Products() {
 
       getProductsInCart();
       getProducts();
+      dispatch(confirmOrder())
 
     }, [])
 

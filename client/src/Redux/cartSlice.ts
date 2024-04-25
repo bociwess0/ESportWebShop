@@ -2,10 +2,11 @@ import { PayloadAction, combineReducers, createSlice } from "@reduxjs/toolkit";
 import { Cart, Product } from "../Interfaces/Interface";
 
 
-const initialState: { products: Product[], totalProductsInCart:number, totalPrice: number} = {
+const initialState: { products: Product[], totalProductsInCart:number, totalPrice: number, cartConfirm: boolean} = {
     products: [],
     totalProductsInCart: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    cartConfirm: false
 }
 
 const cartSlice = createSlice({
@@ -67,6 +68,9 @@ const cartSlice = createSlice({
                     state.totalPrice-=action.payload.product.price;
                 } break;
             }
+        },
+        confirmOrder: (state) => {
+            state.cartConfirm = !state.cartConfirm;
         }
     }
     
@@ -79,6 +83,7 @@ export const retrieveCart = cartSlice.actions.retrieveCart;
 export const addToCart = cartSlice.actions.addToCart;
 export const removeFromCart = cartSlice.actions.removeFromCart;
 export const changeQuantity = cartSlice.actions.changeProductQuantity
+export const confirmOrder = cartSlice.actions.confirmOrder;
 export type RootStateProducts = ReturnType<typeof rootReducer>;
 
 export default cartReducer;

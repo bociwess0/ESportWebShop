@@ -7,7 +7,7 @@ import CartTotal from "../CartTotal/CartTotal";
 import classes from './CartProducts.module.css';
 import { useEffect } from "react";
 import { fetchCart } from "../../../DatabaseRequests/Requests";
-import { retrieveCart } from "../../../Redux/cartSlice";
+import { confirmOrder, retrieveCart } from "../../../Redux/cartSlice";
 import StepButtons from "../StepButtons/StepButtons";
 
 function CartProducts() {
@@ -24,6 +24,7 @@ function CartProducts() {
         }
 
         getProductsInCart();
+        dispatch(confirmOrder())
     }, [])    
 
     return (
