@@ -5,6 +5,7 @@ import classes from './CartItem.module.css';
 import { removeFromCart } from "../../../Redux/cartSlice";
 import { removeFromCartDB } from "../../../DatabaseRequests/Requests";
 import ChooseQuantity from "../../Product/ChooseQuantity/ChooseQuantity";
+import { NavLink } from "react-router-dom";
 
 interface Props {
     product: Product;
@@ -22,15 +23,15 @@ function CartItem({product}: Props) {
     return(
         <div className={classes.cartItem}>
             <div className={classes.imgAndPrice}>
-                <div className={classes.imgWrapper}>
+                <NavLink to={`/products/${product.id}`} className={classes.imgWrapper}>
                     <img src={productImage} alt="" />
-                </div>
+                </NavLink>
                 <div className={classes.cartInfo}>
                     <div className={classes.category}>{product.brand}</div>
                     <div className={classes.name}>{product.name}</div>
                 </div>
             </div>
-            <ChooseQuantity product={product} cartItem={true} />
+            <ChooseQuantity product={product} cartItem={true} action={false} />
             <div className={classes.price}>{`${product.price}€`}</div>
             <div className={classes.btnWrapper}>
                 <button onClick={removeFromCartHandler}>Remove</button>

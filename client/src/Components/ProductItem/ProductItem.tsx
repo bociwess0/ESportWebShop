@@ -17,7 +17,7 @@ function ProductItem({product}: Props) {
     const dispatch = useDispatch();
 
     const addToCartHandler = () => {
-        dispatch(addToCart({product: product}));
+        dispatch(addToCart({product: product, quantity: 1}));
         addTocartDB(product, 1);
     }
 

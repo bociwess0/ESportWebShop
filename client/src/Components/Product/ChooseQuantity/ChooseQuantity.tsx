@@ -6,15 +6,20 @@ import { useEffect, useState } from 'react';
 
 interface Props {
     product: Product,
-    cartItem : boolean
+    cartItem : boolean,
+    action: Function | boolean;
 }
 
-function ChooseQuantity({product, cartItem} : Props) {
+function ChooseQuantity({product, cartItem, action} : Props) {
 
     const dispatch = useDispatch();
 
     const [quantityValue, setQuantityValue] = useState(1);
     const [disabledButton, setDisabledButton] = useState(false);
+
+    useEffect(() => {
+        if(typeof action === "function") action(quantityValue);
+    }, [quantityValue])
 
     const changeProductQuantityHandler = (value: number, action: string, product: Product) => {
         if(cartItem) {

@@ -16,3 +16,15 @@
 .price {
     font-size: 25px;
 }
+
+.addToCartButton {
+    border-radius: 20px;
+    border: 2px solid #F8252C;
+    background: linear-gradient(#FB2740, #F3230F);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    max-width: 200px;
+    margin-top: 20px;
+}

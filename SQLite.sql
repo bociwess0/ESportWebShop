@@ -1,2 +1,2 @@
 -- SQLite
-DELETE FROM Carts;
+DELETE FROM CartItems;

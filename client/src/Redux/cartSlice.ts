@@ -14,33 +14,34 @@ const cartSlice = createSlice({
     reducers: {
         retrieveCart: (state, action:PayloadAction<{cart: Cart}>) => {
             state.products = action.payload.cart.products;
-            state.totalProductsInCart = state.products.length;
             
             state.totalPrice = 0;
+            state.totalProductsInCart = 0;
             state.products.forEach((item) => {
-                state.totalPrice += item.price;
+                state.totalPrice += item.price * item.quantity;
+                state.totalProductsInCart += item.quantity
             })
             
-
         },
-        addToCart: (state, action: PayloadAction<{product: Product}>) => {
+        addToCart: (state, action: PayloadAction<{product: Product, quantity: number}>) => {
 
             let addedProduct = action.payload.product;
             let addedProductIndex = state.products.findIndex((item: Product) => item.id === addedProduct.id);
 
             if(addedProductIndex !== -1) {
-                state.products[addedProductIndex].quantity += 1;
+                state.products[addedProductIndex].quantity += action.payload.quantity;
                 state.totalPrice+=addedProduct.price;
             } else {
                 let newProduct:Product = {
                     ...addedProduct,
-                    quantity: 1
+                    quantity:  action.payload.quantity
                 }
+                console.log(newProduct);
+                
                 state.products.push(newProduct);
                 state.totalPrice+=newProduct.price;
             }
-            state.totalProductsInCart++;
-
+            state.totalProductsInCart+=action.payload.quantity;
         },
         removeFromCart: (state, action: PayloadAction<{item: Product}>) => {
             let filteredProducts: Product[] = state.products.filter((item: Product) => item.id !== action.payload.item.id);
