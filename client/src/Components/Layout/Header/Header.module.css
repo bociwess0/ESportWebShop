@@ -25,3 +25,8 @@
 .logoWrapper img {
     filter: brightness(0) saturate(100%) invert(26%) sepia(28%) saturate(6854%) hue-rotate(342deg) brightness(95%) contrast(106%);
 }
+
+.rightItemsWrapper {
+    display: flex;
+    gap: 40px;
+}

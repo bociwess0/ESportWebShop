@@ -13,3 +13,7 @@ body {
   background-color: #151718 !important;
   min-height: 100vh;
 }
+
+.modal-header .btn-close {
+  margin: 0 !important;
+}
