@@ -1,6 +1,6 @@
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useState } from "react";
-import classes from "./RegisterModal.module.css"
+import "./RegisterModal.css"
 
 interface Props {
     modalShow: boolean;
@@ -58,6 +58,18 @@ function RegisterModal({ modalShow, showHideBsModal, showLoginModal }: Props) {
 
         setValidated(true);
     };
+
+    function handeCheckPasswords(target: EventTarget & (HTMLInputElement | HTMLTextAreaElement)): void {
+        
+        if (target.value !== password) {
+            setPasswordsMatch(false);
+            target.classList.add("is-invalid")
+        } else {
+            setPasswordsMatch(true);
+            target.classList.remove("is-invalid");
+        }
+
+    }
 
     return (
         <Modal show={modalShow} onHide={handleShowHideModal} centered size="lg">
@@ -125,8 +137,10 @@ function RegisterModal({ modalShow, showHideBsModal, showLoginModal }: Props) {
 
                             <Form.Group as={Col} controlId="repeatPassword">
                                 <Form.Label style={{ color: "#1D1E21" }}>Repeat Password</Form.Label>
-                                <Form.Control className={classes.repeatPassword} required type="password" onChange={(text) => setRepeatedPassword(text.target.value)} isInvalid={!passwordsMatch} />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                <Form.Control className="repeatPassword" required type="password" onChange={(text) => {
+                                    handeCheckPasswords(text.target)
+                                }} isInvalid={!passwordsMatch} />
+                                {passwordsMatch && <Form.Control.Feedback>Looks good!</Form.Control.Feedback>}
                                 <Form.Control.Feedback type="invalid">Passwords do not match.</Form.Control.Feedback>
                             </Form.Group>
                         </Row>
