@@ -19,7 +19,9 @@ builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 builder.Services.AddCors();
-builder.Services.AddIdentityCore<User>()
+builder.Services.AddIdentityCore<User>(opt => {
+    opt.User.RequireUniqueEmail = true; // uniqe emails only
+})
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>();
 

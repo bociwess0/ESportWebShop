@@ -23,7 +23,7 @@ namespace API.Controllers
         public async Task<ActionResult<User>> Login(LoginDTO loginDTO) {
             var user = await _userManager.FindByNameAsync(loginDTO.Username); // did user exist
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginDTO.Password)) {
-                throw null;
+                return Unauthorized();
             }
 
             return user;
@@ -40,7 +40,7 @@ namespace API.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
 
-                return null; 
+                return Unauthorized(); 
             }
 
             await _userManager.AddToRoleAsync(user, "Member");
