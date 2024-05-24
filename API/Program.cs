@@ -1,6 +1,7 @@
 using API.Data;
 using API.Data.Migrations;
 using API.Entities;
+using API.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<StoreContext>(opt => {
 });
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
+builder.Services.AddScoped<TokenService>();
 
 builder.Services.AddCors();
 builder.Services.AddIdentityCore<User>(opt => {
