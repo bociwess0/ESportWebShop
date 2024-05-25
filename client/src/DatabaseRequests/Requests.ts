@@ -10,19 +10,14 @@ axios.defaults.withCredentials = true;
 var cookieName = 'userId';
 
 function checkCookie(): boolean {
-    // Split the cookie string into individual cookies
     const cookies: string[] = document.cookie.split(';');
     
-    // Loop through each cookie to check if it matches the provided name
     for (let i = 0; i < cookies.length; i++) {
         const cookie: string = cookies[i].trim();
-        // Check if the cookie starts with the provided name
         if (cookie.indexOf(cookieName + '=') === 0) {
-            // If found, return true
             return true;
         }
     }
-    // If not found, return false
     return false;
 }
 
@@ -111,4 +106,40 @@ export async function removeFromCartDB(productId:number, quantity:number) {
     .catch(error => {
         console.log(error);
     })
+}
+
+// User
+
+interface LoginData {
+    username: string,
+    password: string
+}
+
+interface LoginResponse {
+    success: boolean;
+    message: string;
+}
+
+export async function loginUser(loginData: LoginData): Promise<LoginResponse> {
+    try {
+        const response = await axios.post(`Account/login`, loginData);
+        if (response.status === 200) {
+            console.log(`User with username: ${loginData.username} is successfully logged in!`);
+            return {
+                success: true,
+                message: `User with username: ${loginData.username} is successfully logged in!`
+            };
+        } else {
+            return {
+                success: false,
+                message: `Unexpected response status: ${response.status}`
+            };
+        }
+    } catch (error) {
+        console.log('Error logging in:', error);
+        return {
+            success: false,
+            message: `Login failed: ${error}`
+        };
+    }
 }

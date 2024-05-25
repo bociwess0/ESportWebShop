@@ -1,6 +1,7 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import classes from "./LoginModal.module.css";
+import { loginUser } from "../../../../../DatabaseRequests/Requests";
 
 interface Props {
     modalShow: boolean
@@ -14,7 +15,7 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
     const [validated, setValidated] = useState<boolean>(false);
 
 
-    const [email, setEmail] = useState('');
+    const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const hideModal = () => {
@@ -29,21 +30,26 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
         showRegisterModal();
     }
 
-    const handleSubmit = (event : any) => {
+    async function handleSubmit (event : any) {
         const form = event.currentTarget;
         event.preventDefault();
-            event.stopPropagation();
+        event.stopPropagation();
+
+        var logged = false;
 
         if (form.checkValidity() === true) {
 
             let formData = {
-                email: email,
+                username: username,
                 password: password,
             }
 
+            logged = (await loginUser(formData)).success;
+            
         }
 
         setValidated(true);
+        if(logged) showHideBsModal(false)
     };
 
     return(
@@ -53,15 +59,15 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
                     <Modal.Title style={{ margin: "0 auto"}}>LOGIN</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{minHeight: "230px"}}>
-                    <Form.Group controlId="email">
-                        <Form.Label style={{color: "#ffffff"}}>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" required onChange={(text) => setEmail(text.target.value)} />
+                    <Form.Group controlId="userName">
+                        <Form.Label style={{color: "#1D1E21"}}>Username</Form.Label>
+                        <Form.Control type="text" placeholder="Enter username" required onChange={(text) => setUserName(text.target.value)} />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                        <Form.Control.Feedback type="invalid"> Please provide a valid email. </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid"> Please provide a valid username. </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group controlId="password">
-                        <Form.Label style={{color: "#ffffff"}}>Last Name</Form.Label>
+                        <Form.Label style={{color: "#1D1E21"}}>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required onChange={(text) => setPassword(text.target.value)} />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid"> Please provide a valid password. </Form.Control.Feedback>
