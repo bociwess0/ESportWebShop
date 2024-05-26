@@ -15,7 +15,7 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
     const [validated, setValidated] = useState<boolean>(false);
 
 
-    const [username, setUserName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const hideModal = () => {
@@ -40,7 +40,7 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
         if (form.checkValidity() === true) {
 
             let formData = {
-                username: username,
+                email: email,
                 password: password,
             }
 
@@ -59,11 +59,11 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
                     <Modal.Title style={{ margin: "0 auto"}}>LOGIN</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{minHeight: "230px"}}>
-                    <Form.Group controlId="userName">
-                        <Form.Label style={{color: "#1D1E21"}}>Username</Form.Label>
-                        <Form.Control type="text" placeholder="Enter username" required onChange={(text) => setUserName(text.target.value)} />
+                    <Form.Group controlId="email">
+                        <Form.Label style={{color: "#1D1E21"}}>Email</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" required onChange={(text) => setEmail(text.target.value)} />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                        <Form.Control.Feedback type="invalid"> Please provide a valid username. </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid"> Please provide a valid email. </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group controlId="password">

@@ -1,2 +1,2 @@
 -- SQLite
-DELETE FROM CartItems;
+DELETE FROM AspNetUsers;

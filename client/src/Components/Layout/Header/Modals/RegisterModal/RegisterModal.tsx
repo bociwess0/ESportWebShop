@@ -1,6 +1,7 @@
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useState } from "react";
 import "./RegisterModal.css"
+import { registerUser } from "../../../../../DatabaseRequests/Requests";
 
 interface Props {
     modalShow: boolean;
@@ -29,34 +30,35 @@ function RegisterModal({ modalShow, showHideBsModal, showLoginModal }: Props) {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
-        const form = event.currentTarget;
+    async function handleSubmit (event: any) {
         event.preventDefault();
         event.stopPropagation();
+        const form = event.currentTarget;
+
+        let registeredUser: boolean = false;
 
         if (password !== repeatedPassword) {
             setPasswordsMatch(false);
         } else {
             setPasswordsMatch(true);
-        }
-
+        } 
+        
         if (form.checkValidity() === true && password === repeatedPassword) {
             let formData = {
+                email: email,
+                password: password,
                 firstName: firstName,
                 lastName: lastName,
-                email: email,
-                phone: phone,
                 address: address,
                 city: city,
-                password: password,
-                repeatedPassword: repeatedPassword
+                phone: phone,
             };
 
-            // Handle form submission logic here
+            registeredUser = (await registerUser(formData)).success;
         }
 
         setValidated(true);
+        if(registeredUser) showHideBsModal(false)
     };
 
     function handeCheckPasswords(target: EventTarget & (HTMLInputElement | HTMLTextAreaElement)): void {
@@ -139,6 +141,7 @@ function RegisterModal({ modalShow, showHideBsModal, showLoginModal }: Props) {
                                 <Form.Label style={{ color: "#1D1E21" }}>Repeat Password</Form.Label>
                                 <Form.Control className="repeatPassword" required type="password" onChange={(text) => {
                                     handeCheckPasswords(text.target)
+                                    setRepeatedPassword(text.target.value);
                                 }} isInvalid={!passwordsMatch} />
                                 {passwordsMatch && <Form.Control.Feedback>Looks good!</Form.Control.Feedback>}
                                 <Form.Control.Feedback type="invalid">Passwords do not match.</Form.Control.Feedback>

@@ -25,7 +25,7 @@ namespace API.Controllers
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO) {
-            var user = await _userManager.FindByNameAsync(loginDTO.Username); // did user exist
+            var user = await _userManager.FindByEmailAsync(loginDTO.Email); // find user by email
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginDTO.Password)) {
                 return Unauthorized();
             }
@@ -38,22 +38,29 @@ namespace API.Controllers
 
         [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterDTO registerDTO) {
-            var user = new User{UserName = registerDTO.Username, Email = registerDTO.Email};
+            var user = new User {
+                UserName = registerDTO.Email, // Set UserName to Email
+                Email = registerDTO.Email,
+                FirstName = registerDTO.FirstName,
+                LastName = registerDTO.LastName,
+                Address = registerDTO.Address,
+                City = registerDTO.City,
+                PhoneNumber = registerDTO.Phone
+            };
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 
-            if(!result.Succeeded) {
+            if (!result.Succeeded) {
                 foreach (var error in result.Errors) {
                     ModelState.AddModelError(error.Code, error.Description);
                 }
 
-                return Unauthorized(); 
+                return BadRequest(ModelState); // Return detailed error information
             }
 
             await _userManager.AddToRoleAsync(user, "Member");
 
             return StatusCode(201);
-
         }
 
         [Authorize]

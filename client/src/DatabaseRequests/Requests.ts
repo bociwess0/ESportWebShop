@@ -111,7 +111,7 @@ export async function removeFromCartDB(productId:number, quantity:number) {
 // User
 
 interface LoginData {
-    username: string,
+    email: string,
     password: string
 }
 
@@ -124,10 +124,45 @@ export async function loginUser(loginData: LoginData): Promise<LoginResponse> {
     try {
         const response = await axios.post(`Account/login`, loginData);
         if (response.status === 200) {
-            console.log(`User with username: ${loginData.username} is successfully logged in!`);
+            console.log(`User with email: ${loginData.email} is successfully logged in!`);
             return {
                 success: true,
-                message: `User with username: ${loginData.username} is successfully logged in!`
+                message: `User with email: ${loginData.email} is successfully logged in!`
+            };
+        } else {
+            return {
+                success: false,
+                message: `Unexpected response status: ${response.status}`
+            };
+        }
+    } catch (error) {
+        console.log('Error logging in:', error);
+        return {
+            success: false,
+            message: `Login failed: ${error}`
+        };
+    }
+}
+
+
+interface RegisterData {
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    address: string,
+    city: string,
+    phone: string,
+}
+
+export async function registerUser(registerData: RegisterData): Promise<LoginResponse> {
+    try {
+        const response = await axios.post(`Account/register`, registerData);
+        if (response.status === 200) {
+            console.log(`User with email: ${registerData.email} is successfully logged in!`);
+            return {
+                success: true,
+                message: `User with email: ${registerData.email} is successfully logged in!`
             };
         } else {
             return {
