@@ -185,11 +185,6 @@ export async function registerUser(registerData: RegisterData): Promise<LoginRes
     }
 }
 
-interface currentUser {
-    email: string,
-    token: string
-}
-
 export async function getCurrentUser() {
     const currentUserStorageItemString = localStorage.getItem("currentUser");
 

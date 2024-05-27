@@ -15,3 +15,13 @@ export interface Cart {
     userId: string,
     products: Product[];
 }
+
+export interface User {
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    address: string,
+    city: string,
+    phone: string,
+}
