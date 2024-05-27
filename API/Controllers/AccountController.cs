@@ -63,16 +63,37 @@ namespace API.Controllers
             return StatusCode(201);
         }
 
-        [Authorize]
         [HttpGet("currentUser")]
-        public async Task<ActionResult<UserDTO>> GetCurrentUser() {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+        public async Task<ActionResult<UserDTO>> GetCurrentUser(string email, string token) {
 
-            return new UserDTO {
+            // Validate the token
+            var validUser = await _tokenService.ValidateToken(token);
+            if (validUser == null)
+            {
+                return Unauthorized("Invalid token");
+            }
+
+            // Fetch all users (this is a placeholder, replace with actual user fetching logic)
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null) {
+                return Unauthorized();
+            }
+
+            // Map users to RegisterDTO (adjust this as per your actual data source)
+            var currentUser = new RegisterDTO
+            {
                 Email = user.Email,
-                Token = await _tokenService.GenerateToken(user)
+                Password = user.PasswordHash, // Note: Do not expose passwords in a real application
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Address = user.Address,
+                City = user.City,
+                Phone = user.PhoneNumber,
             };
-        }
+
+            return Ok(currentUser);
+            }
 
     }
 }

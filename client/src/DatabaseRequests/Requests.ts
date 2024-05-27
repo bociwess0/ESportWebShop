@@ -21,6 +21,8 @@ function checkCookie(): boolean {
     return false;
 }
 
+//Pa$$w0rd
+
 export function clearCart() {
     document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
@@ -118,6 +120,7 @@ interface LoginData {
 interface LoginResponse {
     success: boolean;
     message: string;
+    data?: any;
 }
 
 export async function loginUser(loginData: LoginData): Promise<LoginResponse> {
@@ -125,9 +128,11 @@ export async function loginUser(loginData: LoginData): Promise<LoginResponse> {
         const response = await axios.post(`Account/login`, loginData);
         if (response.status === 200) {
             console.log(`User with email: ${loginData.email} is successfully logged in!`);
+
             return {
                 success: true,
-                message: `User with email: ${loginData.email} is successfully logged in!`
+                message: `User with email: ${loginData.email} is successfully logged in!`,
+                data: response.data
             };
         } else {
             return {
@@ -156,13 +161,14 @@ interface RegisterData {
 }
 
 export async function registerUser(registerData: RegisterData): Promise<LoginResponse> {
+    
     try {
         const response = await axios.post(`Account/register`, registerData);
-        if (response.status === 200) {
-            console.log(`User with email: ${registerData.email} is successfully logged in!`);
+        if (response.status === 201) {
+            console.log(`User with email: ${registerData.email} is successfully registered!`);
             return {
                 success: true,
-                message: `User with email: ${registerData.email} is successfully logged in!`
+                message: `User with email: ${registerData.email} is successfully registered!`
             };
         } else {
             return {
@@ -176,5 +182,32 @@ export async function registerUser(registerData: RegisterData): Promise<LoginRes
             success: false,
             message: `Login failed: ${error}`
         };
+    }
+}
+
+interface currentUser {
+    email: string,
+    token: string
+}
+
+export async function getCurrentUser() {
+    const currentUserStorageItemString = localStorage.getItem("currentUser");
+
+    if (currentUserStorageItemString !== null) {
+        const currentUser = JSON.parse(currentUserStorageItemString);
+
+        try {
+            const response = await axios.get(`Account/currentUser?email=${currentUser.email}&token=${currentUser.token}`);
+            
+            console.log(response.data);
+            
+            return response.data;
+        } catch (error) {
+            console.log('Error fetching current user:', error);
+        }
+    } else {
+        // Handle the case where the item is null
+        // For example, you can set currentUser to a default value or take appropriate action
+        return null;
     }
 }

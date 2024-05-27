@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fontsource/poppins";
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { getCurrentUser } from './DatabaseRequests/Requests';
 
 function App() {
 
@@ -14,6 +15,13 @@ function App() {
     if(location.pathname === "/") {
       navigate("/products");
     }
+
+    async function getCurentUserHandler() {
+      let currentUser = await getCurrentUser();
+    }
+
+    getCurentUserHandler();
+
   }, [])
 
   return (

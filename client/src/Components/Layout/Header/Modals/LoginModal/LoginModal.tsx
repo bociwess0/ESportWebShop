@@ -45,6 +45,9 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
             }
 
             logged = (await loginUser(formData)).success;
+            let data = (await loginUser(formData)).data;
+            
+            localStorage.setItem("currentUser", JSON.stringify(data))
             
         }
 

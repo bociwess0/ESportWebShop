@@ -47,6 +47,36 @@ namespace API.Services
 
         }
 
+        
+        public async Task<User> ValidateToken(string token) {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_config["JWTSettings:TokenKey"]);
+
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ClockSkew = TimeSpan.Zero // Override the default clock skew of 5 mins
+                }, out SecurityToken validatedToken);
+
+                var jwtToken = (JwtSecurityToken)validatedToken;
+                var userEmail = jwtToken.Claims.First(x => x.Type == ClaimTypes.Email).Value;
+
+                // Retrieve the user based on the email
+                var user = await _userManager.FindByEmailAsync(userEmail);
+                return user;
+            }
+            catch
+            {
+                // Token validation failed
+                return null;
+            }
+        }
 
     }
 }
