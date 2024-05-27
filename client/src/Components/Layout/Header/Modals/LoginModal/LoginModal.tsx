@@ -9,6 +9,10 @@ interface Props {
     showRegisterModal: Function
 }
 
+interface LoginData {
+    email: string,
+    password: string
+}
 
 function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
 
@@ -36,24 +40,30 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
         event.stopPropagation();
 
         var logged = false;
+        let formData: LoginData = {
+            email: '',
+            password: ''
+        }
 
         if (form.checkValidity() === true) {
 
-            let formData = {
+            formData = {
                 email: email,
                 password: password,
             }
 
             logged = (await loginUser(formData)).success;
-            let data = (await loginUser(formData)).data;
             
-            localStorage.setItem("currentUser", JSON.stringify(data));
-            window.location.reload();
             
         }
 
         setValidated(true);
-        if(logged) showHideBsModal(false)
+        if(logged) {
+            let data = (await loginUser(formData)).data;
+            localStorage.setItem("currentUser", JSON.stringify(data));
+            window.location.reload();
+            showHideBsModal(false)
+        }
     };
 
     return(
