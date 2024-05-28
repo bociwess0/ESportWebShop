@@ -1,26 +1,37 @@
-.headerProfileWrapper {
+.headerProfileContainer {
+    position: relative;
     display: flex;
-    flex-direction: column;
     text-align: right;
     justify-content: center;
+    gap: 20px;
+    padding-right: 40px;
 }
 
-.helloMessage {
-    color: #EB221C;
-    font-size: 11px;
-    text-transform: uppercase;
+.headerProfileContainer::before {
+    content: '';
+    position: absolute;
+    height: 70%;
+    width: 1px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #5f6262;
+    z-index: 0;
 }
 
+.headerProfileIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 45px;
+    max-width: 45px;
+    padding: 10px;
+    background: #F8252C;
+    border-radius: 50%;
+}
 
-.loginLink {
-    text-transform: uppercase;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 20px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    text-decoration: none;
+.headerProfileIcon img {
+    height: 23px;
+    width: 23px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
 }

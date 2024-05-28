@@ -9,7 +9,7 @@ interface Props {
 function CheckoutItems({products} : Props) {
     return(
         <div className={classes.checkoutItemsWrapper}>
-            {products.map((item) => <CheckoutItem product={item} />)}
+            {products.map((item) => <CheckoutItem key={item.id} product={item} />)}
         </div>
     )
 }

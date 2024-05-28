@@ -193,9 +193,7 @@ export async function getCurrentUser() {
 
         try {
             const response = await axios.get(`Account/currentUser?email=${currentUser.email}&token=${currentUser.token}`);
-            
-            console.log(response.data);
-            
+                        
             return response.data;
         } catch (error) {
             console.log('Error fetching current user:', error);
