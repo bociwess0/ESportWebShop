@@ -1,0 +1,48 @@
+.profileBannerImageWrapper {
+    max-height: 230px;
+    width: 100%;
+    object-fit: cover;
+    background: #1D1E21;
+    position: relative;
+    border-radius: 10px;
+}
+
+.profileBannerImageWrapperBlackDrop {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 25px;
+    background: linear-gradient(0.5turn, #141415, #1C1C1D);
+    height: 70px;
+    width: 100%;
+    transform: translateY(-50%);
+    opacity: 0.9;
+}
+
+.profileBannerImageWrapper img {
+    max-height: 230px;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    border-radius: 10px;
+}
+
+.bannerText {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 100%;
+    padding: 20px;
+    transform: translateY(-50%);
+    font-weight: 500;
+}
+
