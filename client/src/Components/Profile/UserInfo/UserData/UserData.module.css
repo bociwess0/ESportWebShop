@@ -5,8 +5,9 @@
     align-items: center;
     flex-direction: column;
     gap: 25px;
-    background: #d8d6d6;
+    background: #1D1E21;
     padding: 20px 10px;
     border-radius: 5px;
     margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
