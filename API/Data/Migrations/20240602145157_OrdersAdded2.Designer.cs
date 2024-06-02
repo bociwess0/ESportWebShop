@@ -3,6 +3,7 @@ using System;
 using API.Data.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240602145157_OrdersAdded2")]
+    partial class OrdersAdded2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
@@ -40,9 +43,6 @@ namespace API.Data.Migrations
                     b.Property<int?>("CartId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int?>("ProductId")
                         .HasColumnType("INTEGER");
 
@@ -52,8 +52,6 @@ namespace API.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -69,7 +67,7 @@ namespace API.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("TotalPrice")
+                    b.Property<int>("TotalPrice")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
@@ -95,6 +93,9 @@ namespace API.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PictureUrl")
                         .HasColumnType("TEXT");
 
@@ -108,6 +109,8 @@ namespace API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Products");
                 });
@@ -216,13 +219,13 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4c0232e8-2dde-49a7-9464-7a2b1e71d937",
+                            Id = "277eab1d-4596-480e-8abb-ff56a2448853",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "74f25ab0-ca0a-4099-80f0-a2abd14164dc",
+                            Id = "ec65aff7-bf37-4abc-96fa-08b524086ef4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -336,10 +339,6 @@ namespace API.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CartId");
 
-                    b.HasOne("API.Entities.Order", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("API.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
@@ -347,6 +346,13 @@ namespace API.Data.Migrations
                     b.Navigation("Cart");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("API.Entities.Product", b =>
+                {
+                    b.HasOne("API.Entities.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

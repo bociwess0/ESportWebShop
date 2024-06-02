@@ -32,7 +32,7 @@
     border-radius: 0 0 10px 10px;
     transition: "";
     transition: max-height 0.4s ease-out;
-    height: 300px;
+    height: 330px;
     overflow: hidden;
 }
 
@@ -40,8 +40,13 @@
     padding: 20px;
 }
 
+.orderProductList {
+    position: relative;
+}
+
 .totalPrice {
     font-size: 18px;
     text-transform: uppercase;
     color: #ffffff;
+    margin-top: 20px;
 }

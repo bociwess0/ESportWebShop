@@ -7,6 +7,7 @@ import OrderProduct from './OrderProduct/OrderProduct';
 import { Product } from '../../../../../Interfaces/Interface';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import CustomDot from './CustomDot/CustomDot';
 
 const responsive = {
   superLargeDesktop: {
@@ -52,6 +53,8 @@ const OrderItem: React.FC = () => {
               swipeable
               draggable
               showDots
+              renderDotsOutside
+              customDot={<CustomDot />}
               responsive={responsive}
               ssr
               infinite
