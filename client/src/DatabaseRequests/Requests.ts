@@ -27,6 +27,7 @@ export function clearCart() {
     document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
 
+
 export async function fetchProducts(): Promise<Product[]> {
     const response: AxiosResponse<any> = await axios.get("Products");
     const products: Product[] = [];
@@ -202,5 +203,28 @@ export async function getCurrentUser() {
         // Handle the case where the item is null
         // For example, you can set currentUser to a default value or take appropriate action
         return null;
+    }
+}
+
+
+// Orders
+
+export async function submitOrder(userEmail : string) {
+    axios.post(`Order?userEmail=${userEmail}`, {})
+    .then(response => {
+        console.log(response.data);
+      })
+    .catch(error => {
+        console.log(error);
+    })
+}
+
+export async function getOrdersForUser(userEmail: string) {
+    try {
+        const response: AxiosResponse<any> = await axios.get(`Order?userEmail=${userEmail}`);
+        return response.data;
+    } catch (error) {
+        console.log("Failed to fetch orders:", error);
+        throw error;
     }
 }

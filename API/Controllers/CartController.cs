@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Data.Migrations;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,10 @@ namespace API.Controllers
         public async Task<ActionResult<CartDTO>> GetCart()
         {
             var cart = await RetrieveCart();
-            return MapCartDto(cart);
+
+            var cartDto = CartExtensions.MapCartDto(cart);
+
+            return cartDto;
 
         }
 
@@ -42,7 +46,10 @@ namespace API.Controllers
 
             var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
 
-            if(result) return CreatedAtRoute("GetCart", MapCartDto(cart));
+            var cartDto = CartExtensions.MapCartDto(cart);
+
+
+            if(result) return CreatedAtRoute("GetCart", cartDto);
 
             return null;
             
@@ -82,25 +89,6 @@ namespace API.Controllers
             _context.Carts.Add(cart);
 
             return cart;
-        }
-
-        private CartDTO MapCartDto(Cart cart)
-        {
-            return new CartDTO
-            {
-                Id = cart.Id,
-                UserId = cart.UserId,
-                Products = cart.Products.Select(product => new CartItemDTO
-                {
-                    Id = product.Product.Id,
-                    Name = product.Product.Name,
-                    Description = product.Product.Description,
-                    Price = product.Product.Price,
-                    Type = product.Product.Type,
-                    Brand = product.Product.Brand,
-                    Quantity = product.Quantity
-                }).ToList()
-            };
         }
 
     }

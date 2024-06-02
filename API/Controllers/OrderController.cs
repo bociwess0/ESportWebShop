@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Data.Migrations;
 using API.DTOs;
@@ -18,11 +17,17 @@ namespace API.Controllers
         public OrderController(StoreContext context) {
             _context = context;
         }
+
         [HttpGet]
-        public async Task<ActionResult<List<Order>>> GetOrders() {
+        public async Task<ActionResult<List<Order>>> GetOrders(string userEmail) {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == userEmail);
+            if (user == null) {
+                return NotFound("User not found");
+            }
+
             return await _context.Orders
                     .Include(o => o.OrderItems)
-                    .Where(x => x.UserId == User.Identity.Name)
+                    .Where(x => x.UserId == user.Id)
                     .ToListAsync();
         }
 
@@ -35,31 +40,53 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Order>> CreateOrder(OrderDTO orderDTO, string userEmail) {
+        public async Task<ActionResult<Order>> CreateOrder(string userEmail) {
+            var userId = Request.Cookies["userId"];
+            if (string.IsNullOrEmpty(userId)) {
+                return BadRequest(new ProblemDetails { Title = "User ID is missing!" });
+            }
+
             var cart = await _context.Carts
-                    .RetrieveBasketWithItems(orderDTO.UserId)
-                    .FirstOrDefaultAsync();
+                        .Include(i => i.Products)
+                        .ThenInclude(p => p.Product)
+                        .FirstOrDefaultAsync(x => x.UserId == userId);
+            
+            if(cart == null) { 
+                return BadRequest(new ProblemDetails { Title = "Cart does not exist!" }); 
+            }
 
-            if(cart == null) { return BadRequest(new ProblemDetails { Title = "Cart do not exists!" }); }
-
-            var items = new List<CartItem>();
+            var items = new List<OrderItem>();
 
             // Find the user by email
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == userEmail);
-            if (user == null)
-            {
+            if (user == null) {
                 return NotFound("User not found");
             }
 
             foreach (var product in cart.Products) {
-                items.Add(product);
+                if (product?.Product == null) {
+                    return BadRequest(new ProblemDetails { Title = "Product not found in cart item!" });
+                }
+
+                var mappedProduct = new OrderItem {
+                    ProductId = product.Id,
+                    ProductName = product.Product.Name,
+                    Price = product.Product.Price,
+                    Quantity = product.Quantity
+                };
+
+                items.Add(mappedProduct);
             }
 
-            long TotalPrice = items.Sum(item => item.Product.Price * item.Quantity);
+            if (!items.Any()) {
+                return NotFound("Items not found");
+            }
+
+            long TotalPrice = items.Sum(item => item.Price * item.Quantity);
 
             var order = new Order {
-                OrderItems = items,
                 UserId = user.Id,
+                OrderItems = items,
                 TotalPrice = TotalPrice,
             }; 
 
@@ -71,7 +98,6 @@ namespace API.Controllers
             if(result) return CreatedAtRoute("GetOrder", new {id = order.Id});
 
             return BadRequest("Problem with creating order");
-
         }
     }
 }

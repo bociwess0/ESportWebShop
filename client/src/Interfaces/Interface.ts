@@ -25,3 +25,11 @@ export interface User {
     city: string,
     phone: string,
 }
+
+export interface Order {
+    id: number,
+    orderDate: Date,
+    orderItems: Product [],
+    totalPrice: number,
+    userId: string
+}

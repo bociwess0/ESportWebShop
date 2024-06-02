@@ -1,2 +1,2 @@
 -- SQLite
-DELETE FROM AspNetUsers;
+DELETE FROM Orders;

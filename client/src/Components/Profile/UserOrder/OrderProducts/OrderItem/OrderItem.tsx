@@ -1,10 +1,8 @@
-import React, { useState, CSSProperties } from 'react';
-import { useSelector } from 'react-redux';
+import{ useState, CSSProperties } from 'react';
 import classes from './OrderItem.module.css';
 import arrow from '../../../../../Assets/arrow_down.png';
-import { RootStateProducts } from '../../../../../Redux/cartSlice';
 import OrderProduct from './OrderProduct/OrderProduct';
-import { Product } from '../../../../../Interfaces/Interface';
+import { Order, Product } from '../../../../../Interfaces/Interface';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CustomDot from './CustomDot/CustomDot';
@@ -28,9 +26,15 @@ const responsive = {
   }
 };
 
-const OrderItem: React.FC = () => {
-  const products = useSelector((state: RootStateProducts) => state.cartActions.products);
+interface Props {
+  order: Order
+}
+
+function OrderItem ({order} : Props) {
   const [selected, setSelected] = useState<boolean>(false);
+
+  let products = order.orderItems;
+
 
   const onClickHandler = () => {
     setSelected(!selected);
@@ -43,7 +47,10 @@ const OrderItem: React.FC = () => {
   return (
     <div className={classes.orderItemWrapper}>
       <button className={classes.orderItem} onClick={onClickHandler}>
-        <div className={classes.itemText}>Order Item</div>
+        <div className={classes.itemText} style={{display: "flex", justifyContent: "space-between", width: "100%", paddingRight: "20px"}}>
+          <div className="text">{order.userId}</div>
+          <div className="date">{order.orderDate.toString()}</div>
+        </div>
         <img className={classes.arrow} src={arrow} alt="arrow-img" style={{ transform: selected ? "rotate(180deg)" : "rotate(0deg)" }} />
       </button>
       <div className={classes.orderItemContent} style={selectedStyle}>
@@ -71,7 +78,7 @@ const OrderItem: React.FC = () => {
               ))}
             </Carousel>
           </div>
-          <div className={classes.totalPrice}>{`Total: 200000€`}</div>
+          <div className={classes.totalPrice}>{`Total: ${order.totalPrice}€`}</div>
         </div>
       </div>
     </div>

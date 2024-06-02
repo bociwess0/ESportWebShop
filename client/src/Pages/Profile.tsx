@@ -12,21 +12,21 @@ function Profile() {
 
     const [products, setProducts] = useState<Product[]>([]);
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
-      async function getProducts() {
-        const fetchedProducts = await fetchProducts();
-        setProducts(fetchedProducts);
-        dispatch(importProductsFromDatabase({ products: fetchedProducts }));
-      }
+        async function getProducts() {
+            const fetchedProducts = await fetchProducts();
+            setProducts(fetchedProducts);
+            dispatch(importProductsFromDatabase({ products: fetchedProducts }));
+        }
 
-      async function getProductsInCart() {
-        let cart: Cart = await fetchCart();
-        dispatch(retrieveCart({cart: cart}));
-    }
+        async function getProductsInCart() {
+            let cart: Cart = await fetchCart();
+            dispatch(retrieveCart({cart: cart}));
+        }
 
-      getProductsInCart();
-      getProducts();
+        getProductsInCart();
+        getProducts();
     }, [])
 
     return(

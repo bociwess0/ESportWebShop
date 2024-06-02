@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj": {}
+    "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\APi\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj": {
+    "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\APi\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\APi\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\APi\\API.csproj",
         "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\obj\\",
+        "outputPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\APi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
