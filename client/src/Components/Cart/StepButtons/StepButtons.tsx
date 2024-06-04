@@ -4,13 +4,16 @@ import { useEffect, useState } from 'react';
 import PopupModal from '../../Layout/PopupModal/PopupModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStateProducts, confirmOrder } from '../../../Redux/cartSlice';
-import { clearCart } from '../../../DatabaseRequests/Requests';
+import { clearCart, submitOrder } from '../../../DatabaseRequests/Requests';
+import { User } from '../../../Interfaces/Interface';
+import { RootStateProfile } from '../../../Redux/profileSlice';
 
 function StepButtons() {
 
     const location = useLocation();
     const [justifyContent, setJustifyContent] = useState('');
     const cartConfirm = useSelector((state: RootStateProducts) => state.cartActions.cartConfirm);
+    const currentUser: User = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
 
     const [next, setNext]  = useState('');
     const [prev, setPrev] = useState('');
@@ -19,6 +22,7 @@ function StepButtons() {
 
     const handleConfirmOrder = () => {
         dispatch(confirmOrder());
+        submitOrder(currentUser.email);
     }
 
     useEffect(() => {

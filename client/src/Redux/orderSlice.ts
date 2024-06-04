@@ -9,9 +9,7 @@ const orderSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        setOrders: (state, action: PayloadAction<{orders: Order []}>) => {
-            console.log(action.payload.orders);
-            
+        setOrders: (state, action: PayloadAction<{orders: Order []}>) => {            
             state.orders = action.payload.orders;
         }
     }

@@ -31,14 +31,6 @@ namespace API.Controllers
                     .ToListAsync();
         }
 
-        [HttpGet("{id}", Name = "GetOrder")]
-        public async Task<ActionResult<Order>> GetOrderById(int id) {
-            return await _context.Orders
-            .Include(o => o.OrderItems)
-            .Where(x => x.UserId == User.Identity.Name && x.Id == id)
-            .FirstOrDefaultAsync();
-        }
-
         [HttpPost]
         public async Task<ActionResult<Order>> CreateOrder(string userEmail) {
             var userId = Request.Cookies["userId"];
@@ -70,7 +62,7 @@ namespace API.Controllers
 
                 var mappedProduct = new OrderItem {
                     ProductId = product.Id,
-                    ProductName = product.Product.Name,
+                    Name = product.Product.Name,
                     Price = product.Product.Price,
                     Quantity = product.Quantity
                 };
@@ -95,7 +87,7 @@ namespace API.Controllers
 
             var result = await _context.SaveChangesAsync() > 0;
 
-            if(result) return CreatedAtRoute("GetOrder", new {id = order.Id});
+            if(result) return order;
 
             return BadRequest("Problem with creating order");
         }

@@ -1,5 +1,6 @@
 import { PayloadAction, combineReducers, createSlice } from "@reduxjs/toolkit";
 import { Cart, Product } from "../Interfaces/Interface";
+import { submitOrder } from "../DatabaseRequests/Requests";
 
 
 const initialState: { products: Product[], totalProductsInCart:number, totalPrice: number, cartConfirm: boolean} = {
