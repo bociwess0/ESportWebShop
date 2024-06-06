@@ -24,7 +24,7 @@ function CheckoutUserInfo() {
     return(
         <div className={classes.checkoutUserInfoWrapper}>
             <h3>User info</h3>
-            {Object.entries(formData).map(([key, value]) => <FormComponent key={key} formItem={{name: String(key), value: String(value)}} />)}
+            {Object.entries(formData).map(([key, value]) => key !== "password" && <FormComponent key={key} formItem={{name: String(key), value: String(value)}} />)}
         </div>
     )
 }

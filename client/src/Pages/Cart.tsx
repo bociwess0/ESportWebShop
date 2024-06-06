@@ -3,21 +3,32 @@ import CheckoutNav from "../Components/Cart/CheckoutNav/CheckoutNav";
 import { Container } from "react-bootstrap";
 import { useEffect } from "react";
 import StepButtons from "../Components/Cart/StepButtons/StepButtons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootStateProducts } from "../Redux/cartSlice";
+import { RootStateProfile } from "../Redux/profileSlice";
+import { setForm } from "../Redux/formSlice";
 
 function Cart() {
 
     const navigate = useNavigate();
     const location = useLocation();
 
+    const dispatch = useDispatch();
+
     const cartConfirmActive = useSelector((state: RootStateProducts) => state.cartActions.cartConfirm);
+    const userLoggedIn = useSelector((state: RootStateProfile) => state.profileActions.isLoggedIn);
+    const loggedUser = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
 
     useEffect(() => {
         if(location.pathname === "/cart") {
             navigate("/cart/productsInCart");
         }
-    }, [location])
+
+        if(userLoggedIn) {
+            dispatch(setForm({formData: loggedUser}))
+        }
+
+    }, [location, userLoggedIn])
     
 
     return(
