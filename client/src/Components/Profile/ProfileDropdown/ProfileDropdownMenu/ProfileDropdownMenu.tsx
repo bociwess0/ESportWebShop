@@ -2,12 +2,15 @@
 import classes from "./ProfileDropdownMenu.module.css";
 import logoutIcon from "../../../../Assets/logout_profile.png";
 import editIcon from "../../../../Assets/edit_profile.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function ProfileDropdownMenu() {
 
+    const navigate = useNavigate();
+
     const logoutHandler = () => {
         localStorage.removeItem("currentUser");
+        navigate("/products");
         window.location.reload();
     }
 
