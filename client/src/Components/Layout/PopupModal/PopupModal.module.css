@@ -1,0 +1,12 @@
+.triggerButton {
+    padding: 10px 40px;
+    text-transform: uppercase;
+    background: linear-gradient(#DA0047, #7E002C);
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    float: right;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+}

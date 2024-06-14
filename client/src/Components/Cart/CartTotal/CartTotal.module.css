@@ -1,0 +1,14 @@
+.cartTotalWrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    float: right;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    gap: 100px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    padding-bottom: 40px;
+}

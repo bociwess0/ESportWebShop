@@ -1,0 +1,8 @@
+.imgWrapper {
+    background: #ffffff;
+}
+
+.imgWrapper img {
+    max-width: 600px;
+}
+

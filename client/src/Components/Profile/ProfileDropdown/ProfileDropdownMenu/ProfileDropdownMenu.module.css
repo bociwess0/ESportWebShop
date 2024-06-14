@@ -1,0 +1,38 @@
+.profileDropdownMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    min-height: 40px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.profileDropdownMenu button {
+    border: none;
+    padding: 0;
+}
+
+.pddMenuItem {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.pddMenuIcon {
+    max-height: 40px;
+    max-width: 40px;
+    padding: 10px;
+}
+
+.pddText {
+    text-decoration: none;
+    color: inherit;
+}
