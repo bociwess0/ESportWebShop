@@ -108,7 +108,7 @@ try
 }
 catch (Exception ex)
 {
-    logger.LogError(ex, "A problem occurred during migration!");
+    logger.LogError(ex, "A problem occurred during migration!");dwadaw
 }
 
 app.Run();
