@@ -268,8 +268,11 @@ C:\Users\Bogdan\Desktop\ETechWebShop\API\bin\Debug\net8.0\Microsoft.IdentityMode
 C:\Users\Bogdan\Desktop\ETechWebShop\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+<<<<<<< HEAD
 C:\Users\Bogdan\Desktop\ETechWebShop\APi\bin\Debug\net8.0\LiteX Email Core.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\APi\bin\Debug\net8.0\LiteX.Log.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\APi\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\APi\bin\Debug\net8.0\SendGrid.dll
 C:\Users\Bogdan\Desktop\ETechWebShop\APi\bin\Debug\net8.0\StarkbankEcdsa.dll
+=======
+>>>>>>> origin/main
