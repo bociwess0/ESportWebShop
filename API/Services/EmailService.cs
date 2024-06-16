@@ -18,8 +18,7 @@ namespace API.Services
 
        public async Task SendEmailAsync(string email, int orderId)
         {
-            var apiKey = _configuration[""];
-            
+            var apiKey = _configuration["SendGrid:ApiKey"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("etechwebshop@yopmail.com", "Etech Web Shop");
             var subject = "Information about successful order!";
