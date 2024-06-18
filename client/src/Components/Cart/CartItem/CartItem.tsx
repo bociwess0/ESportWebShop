@@ -9,15 +9,15 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
     product: Product;
+    removeProduct: Function,
+    showModal: Function
 }
 
-function CartItem({product}: Props) {
-
-    const dispatch = useDispatch();
+function CartItem({product, removeProduct, showModal}: Props) {
 
     const removeFromCartHandler = () => {
-        removeFromCartDB(product.id, product.quantity);
-        dispatch(removeFromCart({item: product}));
+        removeProduct(product);
+        showModal();
     }
 
     return(

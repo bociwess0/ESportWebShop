@@ -9,6 +9,8 @@ interface Props {
 
 
 function OrderProduct({product} : Props) {
+
+
     return(
         <div className={classes.productItem}>
             <NavLink style={{textDecoration: "none", color: "#000000"}} to={`/products/${product.id}`} className={classes.imgWrapper}>

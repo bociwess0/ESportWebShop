@@ -10,15 +10,17 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
     product: Product;
+    showToastMessage: () => void;
 }
 
-function ProductItem({product}: Props) {
+function ProductItem({product, showToastMessage}: Props) {
 
     const dispatch = useDispatch();
 
     const addToCartHandler = () => {
         dispatch(addToCart({product: product, quantity: 1}));
         addTocartDB(product, 1);
+        showToastMessage();
     }
 
     return(

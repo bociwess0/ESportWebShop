@@ -18,6 +18,8 @@ function Cart() {
     const cartConfirmActive = useSelector((state: RootStateProducts) => state.cartActions.cartConfirm);
     const userLoggedIn = useSelector((state: RootStateProfile) => state.profileActions.isLoggedIn);
     const loggedUser = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
+    const totalProducts : number = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
+
 
     useEffect(() => {
         if(location.pathname === "/cart") {
@@ -33,8 +35,8 @@ function Cart() {
 
     return(
         <Container>
-            {!cartConfirmActive && <CheckoutNav />}
-            {cartConfirmActive && <h3 style={{color: "#fff", textAlign: "center", marginBottom: "50px", marginTop: "50px"}}>Your order</h3>}
+            {!cartConfirmActive && totalProducts > 0 && <CheckoutNav />}
+            {cartConfirmActive && totalProducts > 0 && <h3 style={{color: "#fff", textAlign: "center", marginBottom: "50px", marginTop: "50px"}}>Your order</h3>}
             <Outlet />
         </Container>
     )
