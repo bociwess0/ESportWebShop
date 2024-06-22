@@ -3,7 +3,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #0f5132;
-    border: 1px solid #0f5132;
+    background: #175e3d;
     color: #75b798;
+    border-radius: 10px;
+    border: none;
+    max-width: 250px;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.toastWrapperBody {
+    border: 1px solid #75b798;
+    border-radius: 10px;
+}
+
+.toast-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.toast-transition.show {
+    opacity: 1;
+}
+
+.toast-transition.hide {
+    opacity: 0;
 }

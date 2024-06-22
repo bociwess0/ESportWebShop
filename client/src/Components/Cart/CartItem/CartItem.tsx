@@ -1,9 +1,5 @@
-import { useDispatch } from "react-redux";
-import productImage from "../../../Assets/headphones.webp";
 import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
-import { removeFromCart } from "../../../Redux/cartSlice";
-import { removeFromCartDB } from "../../../DatabaseRequests/Requests";
 import ChooseQuantity from "../../Product/ChooseQuantity/ChooseQuantity";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +20,7 @@ function CartItem({product, removeProduct, showModal}: Props) {
         <div className={classes.cartItem}>
             <div className={classes.imgAndPrice}>
                 <NavLink to={`/products/${product.id}`} className={classes.imgWrapper}>
-                    <img src={productImage} alt="" />
+                    <img src={product.pictureUrl} alt="" />
                 </NavLink>
                 <div className={classes.cartInfo}>
                     <div className={classes.category}>{product.brand}</div>

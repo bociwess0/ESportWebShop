@@ -36,198 +36,198 @@ namespace API.Data
             var products = new List<Product> {
                 		new Product
                 {
-                    Name = "Angular Speedster Board 2000",
+                    Name = "MX Master 3S",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 20000,
-                    PictureUrl = "/images/products/sb-ang1.png",
-                    Brand = "Angular",
-                    Type = "Boards",
+                    Price = 12,
+                    PictureUrl = "/images/products/logitech_mouse_1.jpg",
+                    Brand = "Logitech",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green Angular Board 3000",
+                    Name = "MX Master 3S For Mac",
                     Description = "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-                    Price = 15000,
-                    PictureUrl = "/images/products/sb-ang2.png",
-                    Brand = "Angular",
-                    Type = "Boards",
+                    Price = 30,
+                    PictureUrl = "/images/products/logitech_mouse_2.jpg",
+                    Brand = "Logitech",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Core Board Speed Rush 3",
+                    Name = "GENIUS MOUSE X-G200",
                     Description =
                         "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-                    Price = 18000,
-                    PictureUrl = "/images/products/sb-core1.png",
-                    Brand = "NetCore",
-                    Type = "Boards",
+                    Price = 50,
+                    PictureUrl = "/images/products/genius_mouse_1.jpg",
+                    Brand = "Genius",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Net Core Super Board",
+                    Name = "Genius GX Gaming Ammox X1-400 ",
                     Description =
                         "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-                    Price = 30000,
-                    PictureUrl = "/images/products/sb-core2.png",
-                    Brand = "NetCore",
-                    Type = "Boards",
+                    Price = 100,
+                    PictureUrl = "/images/products/genius_mouse_2.jpg",
+                    Brand = "Genius",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "React Board Super Whizzy Fast",
+                    Name = "HyperX Pulsefire Haste",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 25000,
-                    PictureUrl = "/images/products/sb-react1.png",
-                    Brand = "React",
-                    Type = "Boards",
+                    Price = 70,
+                    PictureUrl = "/images/products/hyperx_mouse_1.webp",
+                    Brand = "HyperX",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Typescript Entry Board",
+                    Name = "Corsair Dark Core RGB Pro",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 12000,
-                    PictureUrl = "/images/products/sb-ts1.png",
-                    Brand = "TypeScript",
-                    Type = "Boards",
+                    Price = 90,
+                    PictureUrl = "/images/products/corsair_mouse.jpg",
+                    Brand = "Corsair",
+                    Type = "Mouses",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Core Blue Hat",
+                    Name = "Genius Pro Headphones HS-G500V",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1000,
-                    PictureUrl = "/images/products/hat-core1.png",
-                    Brand = "NetCore",
-                    Type = "Hats",
+                    Price = 150,
+                    PictureUrl = "/images/products/genius_headphones.png",
+                    Brand = "Genius",
+                    Type = "Headphones",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green React Woolen Hat",
+                    Name = "HyperX Wireless Gaming Headset",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 8000,
-                    PictureUrl = "/images/products/hat-react1.png",
-                    Brand = "React",
-                    Type = "Hats",
+                    Price = 140,
+                    PictureUrl = "/images/products/hyperx_headphones_1.webp",
+                    Brand = "HyperX",
+                    Type = "Headphones",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Purple React Woolen Hat",
+                    Name = "Cloud III Wireless + HX3D Horns Bundle",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1500,
-                    PictureUrl = "/images/products/hat-react2.png",
-                    Brand = "React",
-                    Type = "Hats",
+                    Price = 180,
+                    PictureUrl = "/images/products/hyperx_headphones_2.webp",
+                    Brand = "HyperX",
+                    Type = "Headphones",
                     QuantityInStock = 100
+                    
                 },
                 new Product
                 {
-                    Name = "Blue Code Gloves",
+                    Name = "Razer Nommo V2 Pro - 2.1 PC Gaming Speakers",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1800,
-                    PictureUrl = "/images/products/glove-code1.png",
-                    Brand = "VS Code",
-                    Type = "Gloves",
+                    Price = 385,
+                    PictureUrl = "/images/products/razer_speakers.png",
+                    Brand = "Razer",
+                    Type = "Speakers",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green Code Gloves",
+                    Name = "Razer Leviathan V2 Speakers",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1500,
-                    PictureUrl = "/images/products/glove-code2.png",
-                    Brand = "VS Code",
-                    Type = "Gloves",
+                    Price = 270,
+                    PictureUrl = "/images/products/razer_speakers2.png",
+                    Brand = "Razer",
+                    Type = "Speakers",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Purple React Gloves",
+                    Name = "JBL Xtreme 2",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1600,
-                    PictureUrl = "/images/products/glove-react1.png",
-                    Brand = "React",
-                    Type = "Gloves",
+                    Price = 250,
+                    PictureUrl = "/images/products/jbl_speaker.webp",
+                    Brand = "JBL",
+                    Type = "Speakers",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green React Gloves",
+                    Name = "JBL Partybox Encore Essential",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1400,
-                    PictureUrl = "/images/products/glove-react2.png",
-                    Brand = "React",
-                    Type = "Gloves",
+                    Price = 300,
+                    PictureUrl = "/images/products/jbl_speaker2.webp",
+                    Brand = "JBL",
+                    Type = "Speakers",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Redis Red Boots",
+                    Name = "Rampage SHINE K14 Siyah Keyboard",
                     Description =
                         "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-                    Price = 25000,
-                    PictureUrl = "/images/products/boot-redis1.png",
-                    Brand = "Redis",
-                    Type = "Boots",
+                    Price = 120,
+                    PictureUrl = "/images/products/rampage_keyboard.png",
+                    Brand = "Rampage",
+                    Type = "Keyboards",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Core Red Boots",
+                    Name = "Rampage KB-R34 WINNER Semi Mekanik Keyboard",
                     Description =
-                        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 18999,
-                    PictureUrl = "/images/products/boot-core2.png",
-                    Brand = "NetCore",
-                    Type = "Boots",
+                        "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+                    Price = 160,
+                    PictureUrl = "/images/products/rampage_keyboard2.png",
+                    Brand = "Rampage",
+                    Type = "Keyboards",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Core Purple Boots",
+                    Name = "Genius Gx Scorpion Keyboard",
                     Description =
                         "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-                    Price = 19999,
-                    PictureUrl = "/images/products/boot-core1.png",
-                    Brand = "NetCore",
-                    Type = "Boots",
+                    Price = 100,
+                    PictureUrl = "/images/products/genius_keyboard.jpg",
+                    Brand = "Genius",
+                    Type = "Keyboards",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Angular Purple Boots",
+                    Name = "Logitech G915 TKL keyboard",
                     Description = "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-                    Price = 15000,
-                    PictureUrl = "/images/products/boot-ang2.png",
-                    Brand = "Angular",
-                    Type = "Boots",
+                    Price = 230,
+                    PictureUrl = "/images/products/logitech_keyboard.webp",
+                    Brand = "Logitech",
+                    Type = "Keyboards",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Angular Blue Boots",
-                    Description =
-                        "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-                    Price = 18000,
-                    PictureUrl = "/images/products/boot-ang1.png",
-                    Brand = "Angular",
-                    Type = "Boots",
+                    Name = "Logitech PRO X TKL keyboard",
+                    Description = "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+                    Price = 200,
+                    PictureUrl = "/images/products/logitech_keyboard2.webp",
+                    Brand = "Logitech",
+                    Type = "Keyboards",
                     QuantityInStock = 100
                 },
             };

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Toast } from "react-bootstrap";
 import classes from './ToastMessage.module.css';
 
@@ -9,20 +9,23 @@ interface ToastMessage {
 }
 
 function ToastMessage ({ show, onClose, message }: ToastMessage) {
+
+    const [showToast, setShowToast] = useState(show);
+
     useEffect(() => {
-        console.log(show);
-        
         if (show) {
+            setShowToast(true);
           const timer = setTimeout(() => {
+            setShowToast(false);
             onClose();
-          }, 1000); // 1000ms = 1 second
+          }, 800); // 1000ms = 1 second
     
           return () => clearTimeout(timer);
         }
     }, [show, onClose]);
     
       return (
-        <Toast show={true} className={classes.toastWrapper} >
+        <Toast show={show} onClose={onClose} className={`${classes.toastWrapper} toast-transition ${showToast ? 'show' : 'hide'}`}  autohide>
           <Toast.Body className={classes.toastWrapperBody}>{message}</Toast.Body>
         </Toast>
       );

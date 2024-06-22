@@ -25,7 +25,8 @@ namespace API.Extensions
                     Price = product.Product.Price,
                     Type = product.Product.Type,
                     Brand = product.Product.Brand,
-                    Quantity = product.Quantity
+                    Quantity = product.Quantity,
+                    PictureUrl = product.Product.PictureUrl
                 }).ToList()
             };
         }

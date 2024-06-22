@@ -35,10 +35,6 @@ function OrderItem ({order} : Props) {
 
   let products = order.orderItems;
 
-  console.log(products);
-  
-
-
   const onClickHandler = () => {
     setSelected(!selected);
   };

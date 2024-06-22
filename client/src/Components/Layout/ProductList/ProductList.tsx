@@ -10,7 +10,6 @@ import ToastMessage from "../ToastMessage/ToastMessage";
 function ProductList() {
 
     const products: Product[] = useSelector( (state: RootStateProducts) => state.productActions.products);
-    const productsInCart: Product[] = useSelector((state: RootStateProducts) => state.cartActions.products)
 
     const [showToast, setShowToast] = useState(false);
 
@@ -21,10 +20,6 @@ function ProductList() {
     const handleCloseToast = () => {
       setShowToast(false);
     };
-
-    useEffect(() => {
-        
-    }, [productsInCart])
 
     return(
         <Container>

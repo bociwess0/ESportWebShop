@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from './OrderProduct.module.css';
 import { Product } from '../../../../../../Interfaces/Interface';
-import productImage from '../../../../../../Assets/headphones.webp';
 
 interface Props {
     product: Product;
@@ -15,7 +14,7 @@ function OrderProduct({product} : Props) {
         <div className={classes.productItem}>
             <NavLink style={{textDecoration: "none", color: "#000000"}} to={`/products/${product.id}`} className={classes.imgWrapper}>
                 <div className={classes.productImg}>
-                    <img src={productImage} alt="" />
+                    <img src={product.pictureUrl} alt="" />
                 </div>
                 <div className={classes.description}>{product.name}</div>
             </NavLink>

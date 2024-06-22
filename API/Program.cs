@@ -105,6 +105,7 @@ try
 {
     await context.Database.MigrateAsync();
     await DbInitializer.Initialize(context, userManager);
+
 }
 catch (Exception ex)
 {

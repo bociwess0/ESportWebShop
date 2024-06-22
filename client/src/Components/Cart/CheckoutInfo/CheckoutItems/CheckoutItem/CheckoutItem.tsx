@@ -1,6 +1,5 @@
 
 import classes from './CheckoutItem.module.css';
-import productImage from "../../../../../Assets/headphones.webp";
 import { Product } from '../../../../../Interfaces/Interface';
 
 
@@ -13,7 +12,7 @@ function CheckoutItem({product} : Props) {
         <div className={classes.checkoutItem}>
             <div className={classes.imgAndPrice}>
                 <div className={classes.imgWrapper}>
-                    <img src={productImage} alt="" />
+                    <img src={product.pictureUrl} alt="" />
                 </div>
                 <div className={classes.checkoutInfo}>
                     <div className={classes.category}>{product.brand}</div>

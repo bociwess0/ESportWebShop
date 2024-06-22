@@ -30,7 +30,7 @@ function Profile() {
     }, [])
 
     return(
-        <Container>
+        <Container >
             <Row>
                 <Col xs={12} sm={3}>
                     <UserInfo />

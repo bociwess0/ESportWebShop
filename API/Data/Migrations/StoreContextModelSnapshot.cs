@@ -87,6 +87,9 @@ namespace API.Data.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<long>("Price")
                         .HasColumnType("INTEGER");
 
@@ -239,13 +242,13 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c22fb086-a2ca-47fa-a44e-5ec06ccd041f",
+                            Id = "f19f3972-6aac-48a9-9b48-ef491b8c304f",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "5a08aeff-4980-4b35-9d9b-2b3988bb9d94",
+                            Id = "1a9138cb-837e-4789-a661-28259bf48d21",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

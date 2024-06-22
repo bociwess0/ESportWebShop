@@ -38,7 +38,7 @@ function ProductDetails() {
         <Container>
             <Row>
                 <Col xs={12} sm={6}>
-                    {product && <ProductImage />}
+                    {product && <ProductImage product = {product} />}
                 </Col>
                 <Col xs={12} sm={6}>
                     {product && <ProductInfo product={product} />}

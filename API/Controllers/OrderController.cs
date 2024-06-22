@@ -64,7 +64,8 @@ namespace API.Controllers
                     ProductId = product.Id,
                     Name = product.Product.Name,
                     Price = product.Product.Price,
-                    Quantity = product.Quantity
+                    Quantity = product.Quantity,
+                    PictureUrl = product.Product.PictureUrl
                 };
 
                 items.Add(mappedProduct);

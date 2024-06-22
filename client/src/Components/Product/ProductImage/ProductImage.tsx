@@ -1,10 +1,14 @@
 import classes from './ProductImage.module.css';
-import img from '../../../Assets/headphones.webp';
+import { Product } from '../../../Interfaces/Interface';
 
-function ProductImage() {
+interface Props {
+    product: Product
+}
+
+function ProductImage({product} : Props) {
     return(
         <div className={classes.imgWrapper}>
-            <img src={img} alt="product-image" />
+            <img src={product.pictureUrl} alt="product-image" />
         </div>
     )
 }
