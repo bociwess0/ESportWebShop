@@ -3673,11 +3673,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
+      "projectUniqueName": "c:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
+      "projectPath": "c:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\obj\\",
+      "outputPath": "c:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3768,13 +3768,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

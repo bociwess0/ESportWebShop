@@ -39,7 +39,7 @@ namespace API.Data
                     Name = "MX Master 3S",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 12,
+                    Price = 23,
                     PictureUrl = "/images/products/logitech_mouse_1.jpg",
                     Brand = "Logitech",
                     Type = "Mouses",
@@ -49,7 +49,7 @@ namespace API.Data
                 {
                     Name = "MX Master 3S For Mac",
                     Description = "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-                    Price = 30,
+                    Price = 40,
                     PictureUrl = "/images/products/logitech_mouse_2.jpg",
                     Brand = "Logitech",
                     Type = "Mouses",

@@ -61,7 +61,7 @@ namespace API.Controllers
                 }
 
                 var mappedProduct = new OrderItem {
-                    ProductId = product.Id,
+                    ProductId = product.Product.Id,
                     Name = product.Product.Name,
                     Price = product.Product.Price,
                     Quantity = product.Quantity,

@@ -58,7 +58,11 @@ function RegisterModal({ modalShow, showHideBsModal, showLoginModal }: Props) {
         }
 
         setValidated(true);
-        if(registeredUser) showHideBsModal(false)
+        if(registeredUser) {
+            showHideBsModal(false);
+            window.location.reload();
+        }
+        
     };
 
     function handeCheckPasswords(target: EventTarget & (HTMLInputElement | HTMLTextAreaElement)): void {

@@ -60,6 +60,7 @@ function UserData({title, titleColor, enableEdit}: Props) {
         if(response) {
             setTitleColorVar(titleColor);
             setTitleMessage("Your data has been successfully changed!")
+            window.location.reload();
         } else {
             setTitleColorVar("eb474c");
             setTitleMessage("Password has not a correct form or the current password is not found!")

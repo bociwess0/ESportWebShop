@@ -1,6 +1,8 @@
 .imgWrapper {
     background: #ffffff;
     height: 600px;
+    padding: 50px;
+    border-radius: 10px;
 }
 
 .imgWrapper img {

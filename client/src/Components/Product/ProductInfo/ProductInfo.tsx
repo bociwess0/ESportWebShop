@@ -6,6 +6,7 @@ import { addTocartDB } from '../../../DatabaseRequests/Requests';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addToCart } from '../../../Redux/cartSlice';
+import ToastMessage from '../../Layout/ToastMessage/ToastMessage';
 
 interface Props {
     product: Product
@@ -16,11 +17,21 @@ function ProductInfo({product} : Props) {
     const dispatch = useDispatch();
     const [enteredQuantity, setEnteredQuantity] = useState<number>(1);
 
-    const AddToCartHandler = () => {
-        console.log(enteredQuantity);
-        
+    const [showToast, setShowToast] = useState(false);
+
+    const handleShowToast = () => {        
+      setShowToast(true);
+    };
+  
+    const handleCloseToast = () => {
+      setShowToast(false);
+    };
+
+
+    const AddToCartHandler = () => {        
         addTocartDB(product, enteredQuantity);
         dispatch(addToCart({product: product, quantity: enteredQuantity}));
+        handleShowToast();
     }
 
     return(
@@ -31,6 +42,7 @@ function ProductInfo({product} : Props) {
             <div className={classes.price}>{`${product.price}$`}</div>
             <ChooseQuantity product={product} cartItem={false} action={setEnteredQuantity} />
             <button className={classes.addToCartButton} onClick={AddToCartHandler} >Add To Cart</button>
+            <ToastMessage message="Product is successfully added to cart!" show={showToast} onClose={handleCloseToast} />
         </div>
     )
 }

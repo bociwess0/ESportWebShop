@@ -11,6 +11,7 @@ function OrderProducts() {
 
     const currentUser: User | undefined = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
     const orders = useSelector((state: RootStateOrders) => state.orderActions.orders);
+    
 
     const dispatch = useDispatch();
 

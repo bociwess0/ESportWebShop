@@ -27,4 +27,5 @@
     text-transform: uppercase;
     max-width: 200px;
     margin-top: 20px;
+    transition: all 0.5s;
 }

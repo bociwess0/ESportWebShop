@@ -10,6 +10,19 @@ export interface Product {
     quantity: number
 }
 
+export interface OrderProductObj {
+    id: number,
+    name: string,
+    productId: number,
+    description: string,
+    price: number,
+    pictureUrl: string,
+    type: string,
+    brand: string,
+    quantityInStock: number,
+    quantity: number
+}
+
 export interface Cart {
     id: number,
     userId: string,
@@ -40,7 +53,7 @@ export interface UpdatedUser {
 export interface Order {
     id: number,
     orderDate: Date,
-    orderItems: Product [],
+    orderItems: OrderProductObj [],
     totalPrice: number,
     userId: string
 }

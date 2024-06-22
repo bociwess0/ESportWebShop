@@ -17,6 +17,7 @@ interface LoginData {
 function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
 
     const [validated, setValidated] = useState<boolean>(false);
+    const [loginSuccessfull, setloginSuccessfull] = useState<boolean>(true);
 
 
     const [email, setEmail] = useState('');
@@ -24,10 +25,6 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
 
     const hideModal = () => {
         showHideBsModal(false); // Hide the modal by setting modalShow to false in the parent component
-    }
-
-    const handleShowHideModal = () => {
-        showHideBsModal(); // Handle showing the Register modal
     }
 
     const handleRegisterModal = () => {
@@ -63,7 +60,8 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
             localStorage.setItem("currentUser", JSON.stringify(data));
             window.location.reload();
             showHideBsModal(false)
-        }
+            setloginSuccessfull(true);
+        } else setloginSuccessfull(false);
     };
 
     return(
@@ -86,6 +84,7 @@ function LoginModal({modalShow, showHideBsModal, showRegisterModal} : Props) {
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid"> Please provide a valid password. </Form.Control.Feedback>
                     </Form.Group>
+                    {!loginSuccessfull && <div className={classes.errorMessage}> User do not exists. </div>}
                 </Modal.Body>
                 <Modal.Footer style={{justifyContent: 'center', border: "none", gap: "40px"}}>
                     <Button style={{textTransform: "uppercase", background: "linear-gradient(#DA0047, #7E002C)", border: "none", borderRadius: "20px", padding: "5px 30px"}} variant="primary" type="submit">

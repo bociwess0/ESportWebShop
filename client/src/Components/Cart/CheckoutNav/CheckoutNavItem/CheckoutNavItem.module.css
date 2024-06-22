@@ -5,9 +5,20 @@
     gap: 10px;
     color: #ffffff;
     z-index: 1;
-    background: #151718;
     padding: 0 20px;
     text-decoration: none;
+}
+
+.navItem:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 280%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #47494c;
+    z-index: 0;
+    left: 150px;
 }
 
 .number {

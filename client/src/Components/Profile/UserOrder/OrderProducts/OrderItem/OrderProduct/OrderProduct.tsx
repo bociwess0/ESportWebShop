@@ -1,18 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import classes from './OrderProduct.module.css';
-import { Product } from '../../../../../../Interfaces/Interface';
+import {OrderProductObj, Product } from '../../../../../../Interfaces/Interface';
 
 interface Props {
-    product: Product;
+    product: OrderProductObj;
 }
 
 
 function OrderProduct({product} : Props) {
-
-
     return(
         <div className={classes.productItem}>
-            <NavLink style={{textDecoration: "none", color: "#000000"}} to={`/products/${product.id}`} className={classes.imgWrapper}>
+            <NavLink style={{textDecoration: "none", color: "#000000"}} to={`/products/${product.productId}`} className={classes.imgWrapper}>
                 <div className={classes.productImg}>
                     <img src={product.pictureUrl} alt="" />
                 </div>

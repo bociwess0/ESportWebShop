@@ -2,7 +2,7 @@ import{ useState, CSSProperties } from 'react';
 import classes from './OrderItem.module.css';
 import arrow from '../../../../../Assets/arrow_down.png';
 import OrderProduct from './OrderProduct/OrderProduct';
-import { Order, Product } from '../../../../../Interfaces/Interface';
+import { Order, OrderProductObj } from '../../../../../Interfaces/Interface';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CustomDot from './CustomDot/CustomDot';
@@ -72,7 +72,7 @@ function OrderItem ({order} : Props) {
               itemClass="carousel-item-padding-40-px"
               additionalTransfrom={0}
             >
-              {products.map((item: Product) => (
+              {products.map((item: OrderProductObj) => (
                 <OrderProduct product={item} key={item.id} />
               ))}
             </Carousel>
