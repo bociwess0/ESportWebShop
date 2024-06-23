@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Microsoft.Extensions.Configuration;
 
 namespace API.Services
 {
@@ -17,15 +16,9 @@ namespace API.Services
             _configuration = configuration;
         }
 
-        public async Task SendEmailAsync(string email, int orderId)
+       public async Task SendEmailAsync(string email, int orderId)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
-
-            if (string.IsNullOrEmpty(apiKey))
-            {
-                throw new InvalidOperationException("SendGrid API key is not set in the environment variables.");
-            }
-
+            var apiKey = _configuration["SendGrid:ApiKey"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("etechwebshop@yopmail.com", "Etech Web Shop");
             var subject = "Information about successful order!";
@@ -33,6 +26,19 @@ namespace API.Services
             var plainTextContent = $"This is your order id: {orderId}";
             var htmlContent = $"<h1>You have successfully placed your order!</h1>"
                             + $"<p>This is your order id: {orderId}</p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+
+       public async Task SendEmailUserUpdate(string email)
+        {
+            var apiKey = _configuration["SendGrid:ApiKey"];
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("etechwebshop@yopmail.com", "Etech Web Shop");
+            var subject = "Information about successfully changed data in profile!";
+            var to = new EmailAddress(email);
+            var plainTextContent = $"You";
+            var htmlContent = $"<h1>You have successfully change your profile data!</h1>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }

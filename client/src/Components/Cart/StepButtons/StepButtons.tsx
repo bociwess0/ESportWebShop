@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useNavigation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import classes from './StepButtons.module.css';
 import { useEffect, useState } from 'react';
 import PopupModal from '../../Layout/PopupModal/PopupModal';
@@ -7,15 +7,23 @@ import { RootStateProducts, confirmOrder } from '../../../Redux/cartSlice';
 import { clearCart, sendEmailMessage, submitOrder } from '../../../DatabaseRequests/Requests';
 import { Order, User } from '../../../Interfaces/Interface';
 import { RootStateProfile } from '../../../Redux/profileSlice';
+import { RootTypeForm } from '../../../Redux/formSlice';
 
 function StepButtons() {
 
     const location = useLocation();
+    const navigate = useNavigate();
     const [justifyContent, setJustifyContent] = useState('');
     const cartConfirm = useSelector((state: RootStateProducts) => state.cartActions.cartConfirm);
     const currentUser: User = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
+    const userLoggedIn: User = useSelector((state: RootStateProfile) => state.profileActions.isLoggedIn);
     const totalProducts : number = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
+    const formData = useSelector((state : RootTypeForm) => state.formActions.formData);    
+
     const [showModal, setShowModal] = useState<boolean>(false);
+
+    console.log(userLoggedIn);
+    
 
 
     const [next, setNext]  = useState('');
@@ -25,9 +33,25 @@ function StepButtons() {
 
     async function handleConfirmOrder() {
         dispatch(confirmOrder());
-        const order: Order | null = await submitOrder(currentUser.email);
-        if(typeof order?.id !== "undefined") sendEmailMessage(currentUser.email, order.id);
+        console.log(currentUser);
+
+
+        if(userLoggedIn) {
+            const order: Order | null = await submitOrder(currentUser.email);
+            if(typeof order?.id !== "undefined") sendEmailMessage(currentUser.email, order.id);
+        }
+
+        if(formData) {
+            const order: Order | null = await submitOrder(formData.email);
+            if(typeof order?.id !== "undefined") sendEmailMessage(formData.email, order.id);
+        }
+        
     }
+
+    function isNotEmptyObject(obj: object): boolean {
+        return Object.keys(obj).length > 0;
+      }
+      
 
     useEffect(() => {
         switch(location.pathname) {
@@ -41,6 +65,15 @@ function StepButtons() {
             }
         }
     }, [location])
+
+
+    useEffect(() => {  
+        
+        if(!userLoggedIn && location.pathname.includes('checkout') && !isNotEmptyObject(formData)) {
+            navigate("/cart/address");
+        }
+
+    }, [userLoggedIn, formData])
     
 
     return(

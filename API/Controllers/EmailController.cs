@@ -19,6 +19,13 @@ public class EmailController : ControllerBase
         await _emailService.SendEmailAsync(emailRequest.Email, emailRequest.OrderId);
         return Ok("Email sent successfully");
     }
+
+    [HttpPost("send-email-user-update")]
+    public async Task<IActionResult> SendEmailUserUpdate([FromBody] EmailRequest emailRequest)
+    {
+        await _emailService.SendEmailUserUpdate(emailRequest.Email);
+        return Ok("Email sent successfully");
+    }
 }
 
 public class EmailRequest

@@ -4,7 +4,7 @@ import classes from "./UserData.module.css";
 import { RootStateProfile } from "../../../../Redux/profileSlice";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { updateUser } from "../../../../DatabaseRequests/Requests";
+import { sendEmailUserUpdateMessage, updateUser } from "../../../../DatabaseRequests/Requests";
 
 interface Props {
     title: string,
@@ -60,6 +60,7 @@ function UserData({title, titleColor, enableEdit}: Props) {
         if(response) {
             setTitleColorVar(titleColor);
             setTitleMessage("Your data has been successfully changed!")
+            sendEmailUserUpdateMessage(email);
             window.location.reload();
         } else {
             setTitleColorVar("eb474c");
