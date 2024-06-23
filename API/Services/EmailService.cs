@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Services
 {
@@ -16,9 +17,15 @@ namespace API.Services
             _configuration = configuration;
         }
 
-       public async Task SendEmailAsync(string email, int orderId)
+        public async Task SendEmailAsync(string email, int orderId)
         {
-            var apiKey = _configuration["SendGrid:ApiKey"];
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new InvalidOperationException("SendGrid API key is not set in the environment variables.");
+            }
+
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("etechwebshop@yopmail.com", "Etech Web Shop");
             var subject = "Information about successful order!";
