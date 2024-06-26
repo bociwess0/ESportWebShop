@@ -43,12 +43,16 @@ function OrderItem ({order} : Props) {
     maxHeight: selected ? "500px" : "0",
   };
 
+  const formatDateTime = (dateTime: string) => {
+    return dateTime.replace("T", " ");
+  }
+
   return (
     <div className={classes.orderItemWrapper}>
       <button className={classes.orderItem} onClick={onClickHandler}>
         <div className={classes.itemText} style={{display: "flex", justifyContent: "space-between", width: "100%", paddingRight: "20px"}}>
           <div className="text">{`Order id: ${order.id}`}</div>
-          <div className="date">{order.orderDate.toString()}</div>
+          <div className="date">{formatDateTime(order.orderDate.toString())}</div>
         </div>
         <img className={classes.arrow} src={arrow} alt="arrow-img" style={{ transform: selected ? "rotate(180deg)" : "rotate(0deg)" }} />
       </button>

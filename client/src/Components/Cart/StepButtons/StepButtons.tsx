@@ -20,11 +20,7 @@ function StepButtons() {
     const totalProducts : number = useSelector((state: RootStateProducts) => state.cartActions.totalProductsInCart);
     const formData = useSelector((state : RootTypeForm) => state.formActions.formData);    
 
-    const [showModal, setShowModal] = useState<boolean>(false);
-
-    console.log(userLoggedIn);
-    
-
+    const [showModal, setShowModal] = useState<boolean>(false);    
 
     const [next, setNext]  = useState('');
     const [prev, setPrev] = useState('');
@@ -32,16 +28,16 @@ function StepButtons() {
     const dispatch = useDispatch();
 
     async function handleConfirmOrder() {
-        dispatch(confirmOrder());
-        console.log(currentUser);
+        
 
+        dispatch(confirmOrder());
 
         if(userLoggedIn) {
             const order: Order | null = await submitOrder(currentUser.email);
             if(typeof order?.id !== "undefined") sendEmailMessage(currentUser.email, order.id);
         }
 
-        if(formData) {
+        if(formData && !userLoggedIn) {
             const order: Order | null = await submitOrder(formData.email);
             if(typeof order?.id !== "undefined") sendEmailMessage(formData.email, order.id);
         }
