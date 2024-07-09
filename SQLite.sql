@@ -1,2 +1,2 @@
 -- SQLite
-DELETE FROM Orders;
+DELETE FROM OrderItem;

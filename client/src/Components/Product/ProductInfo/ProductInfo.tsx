@@ -39,7 +39,7 @@ function ProductInfo({product} : Props) {
             <h2 className={classes.title}>{product.name}</h2>
             <h4 className={classes.brand}>{product.brand}</h4>
             <div className={classes.description}>{product.description}</div>
-            <div className={classes.price}>{`${product.price}$`}</div>
+            <div className={classes.price}>{`${product.price}€`}</div>
             <ChooseQuantity product={product} cartItem={false} action={setEnteredQuantity} />
             <button className={classes.addToCartButton} onClick={AddToCartHandler} >Add To Cart</button>
             <ToastMessage message="Product is successfully added to cart!" show={showToast} onClose={handleCloseToast} />

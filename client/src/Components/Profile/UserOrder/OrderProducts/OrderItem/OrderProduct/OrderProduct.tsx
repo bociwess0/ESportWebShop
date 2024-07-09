@@ -18,7 +18,7 @@ function OrderProduct({product} : Props) {
             </NavLink>
             <div className={classes.priceWrapper}>
                 <div className={classes.learnMoreButton}>Paid Price</div>
-                <div className={classes.price}>{product.price}</div>
+                <div className={classes.price}>{`${product.price}€`}</div>
             </div>
         </div>
     )

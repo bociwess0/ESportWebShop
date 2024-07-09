@@ -1,0 +1,9 @@
+.productsRow {
+    min-height: 800px;
+}
+
+.pagination {
+    justify-content: center;
+    margin: 30px 0 50px;
+}
+
