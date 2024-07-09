@@ -1,6 +1,7 @@
 
 import classes from './CheckoutItem.module.css';
 import { Product } from '../../../../../Interfaces/Interface';
+import ChooseQuantity from '../../../../Product/ChooseQuantity/ChooseQuantity';
 
 
 interface Props {
@@ -18,7 +19,9 @@ function CheckoutItem({product} : Props) {
                     <div className={classes.category}>{product.brand}</div>
                     <div className={classes.name}>{product.name}</div>
                 </div>
+                
             </div>
+            <div className={classes.quantity}>{`Quantity: ${product.quantity}`}</div>
             <div className={classes.price}>{`${product.price}€`}</div>
         </div>
     )

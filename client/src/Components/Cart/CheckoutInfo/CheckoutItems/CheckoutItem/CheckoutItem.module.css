@@ -19,7 +19,7 @@
     align-items: center;
     gap: 30px;
     height: 100%;
-    width: 400px;
+    width: 320px;
 }
 
 .checkoutItem .imgWrapper {
@@ -72,4 +72,9 @@
     font-size: 14px;
     text-align: left;
     margin-bottom: 0;
+}
+
+.quantity {
+    color: #ffffff;
+    text-transform: uppercase;
 }
