@@ -81,6 +81,7 @@ namespace API.Controllers
                 UserId = user.Id,
                 OrderItems = items,
                 TotalPrice = TotalPrice,
+                OrderStatus = "To be delivered"
             }; 
 
             _context.Orders.Add(order);
@@ -92,5 +93,32 @@ namespace API.Controllers
 
             return BadRequest("Problem with creating order");
         }
+
+        [HttpPut("changeOrderStatus")]
+        public async Task<IActionResult> ChangeOrderStatus (int orderId) {
+            
+
+            var order = await _context.Orders
+                                .Include(i => i.OrderItems)
+                                .FirstOrDefaultAsync(x => x.Id == orderId);
+            
+            if(order == null) {
+                return NotFound("Order with this ID does not exists.");
+            }
+
+            order.OrderStatus = "Delivered";
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok("Order status updated successfully.");
+            }
+            catch (Exception)
+            {
+                return BadRequest("Problem with changing order status.");
+            }
+
+        }
+
     }
 }

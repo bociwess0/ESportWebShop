@@ -17,5 +17,7 @@ namespace API.Entities
 
         public long TotalPrice { get; set; }
 
+        public string OrderStatus { get; set; }
+
     }
 }
