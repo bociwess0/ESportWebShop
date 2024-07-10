@@ -51,3 +51,29 @@
     color: #ffffff;
     margin-top: 20px;
 }
+
+.orderStatus {
+    color: rgb(158, 111, 24);;
+    position: relative;
+}
+
+.orderStatus::before {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    left: -20px;
+    background-color: rgb(158, 111, 24);
+}
+
+
+.delivered {
+    color: rgb(3, 104, 3);
+}
+
+.delivered::before {
+    background-color: rgb(3, 104, 3);
+}

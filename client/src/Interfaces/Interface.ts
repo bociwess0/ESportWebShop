@@ -55,5 +55,6 @@ export interface Order {
     orderDate: Date,
     orderItems: OrderProductObj [],
     totalPrice: number,
-    userId: string
+    userId: string,
+    orderStatus: string
 }

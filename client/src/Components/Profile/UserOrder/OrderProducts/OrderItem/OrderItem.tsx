@@ -33,6 +33,9 @@ interface Props {
 function OrderItem ({order} : Props) {
   const [selected, setSelected] = useState<boolean>(false);
 
+  console.log(order);
+  
+
   let products = order.orderItems;
 
   const onClickHandler = () => {
@@ -52,6 +55,7 @@ function OrderItem ({order} : Props) {
       <button className={classes.orderItem} onClick={onClickHandler}>
         <div className={classes.itemText} style={{display: "flex", justifyContent: "space-between", width: "100%", paddingRight: "20px"}}>
           <div className="text">{`Order id: ${order.id}`}</div>
+          <div className={`${classes.orderStatus} ${order.orderStatus === "Delivered" ? classes.delivered : ''}`} >{order.orderStatus}</div>
           <div className="date">{formatDateTime(order.orderDate.toString())}</div>
         </div>
         <img className={classes.arrow} src={arrow} alt="arrow-img" style={{ transform: selected ? "rotate(180deg)" : "rotate(0deg)" }} />
