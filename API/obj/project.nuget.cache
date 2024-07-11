@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "krd0S1emGOEir2RNZm2qiSRM9e3X4UOZ2j3zXVyxh5n36TAkY6p+xl+3QaS6tUB0hvo62nuQBzXDN1jngx4hAQ==",
+  "dgSpecHash": "hLryT98g6nXOGRbg499+uogY+tCooOmV+kyAh3gM4ROY3e9pgJEbzVE3jwHYUW+t91SKyB0U6E6It/7fe0WKeA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Bogdan\\Desktop\\ETechWebShop\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bogdan\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bogdan\\.nuget\\packages\\litex.email.core\\9.0.0\\litex.email.core.9.0.0.nupkg.sha512",
