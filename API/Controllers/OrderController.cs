@@ -95,7 +95,7 @@ namespace API.Controllers
         }
 
         [HttpPut("changeOrderStatus")]
-        public async Task<IActionResult> ChangeOrderStatus (int orderId) {
+        public async Task<IActionResult> ChangeOrderStatus (int orderId, string orderStatus) {
             
 
             var order = await _context.Orders
@@ -106,7 +106,7 @@ namespace API.Controllers
                 return NotFound("Order with this ID does not exists.");
             }
 
-            order.OrderStatus = "Delivered";
+            order.OrderStatus = orderStatus;
 
             try
             {

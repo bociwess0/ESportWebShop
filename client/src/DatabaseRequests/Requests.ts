@@ -232,6 +232,15 @@ export async function getOrdersForUser(userEmail: string) {
     }
 }
 
+export async function changeOrderStatus(orderId:number, orderStatus: string) {
+    try {
+        const response: AxiosResponse<any> = await axios.put(`Order/changeOrderStatus?orderId=${orderId}&orderStatus=${orderStatus}`);
+        return response.data
+    } catch (error) {
+        console.log("Failed to change order status!", error);
+    }
+}
+
 
 // Email sender
 

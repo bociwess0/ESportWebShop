@@ -33,7 +33,7 @@
     border-radius: 0 0 10px 10px;
     transition: "";
     transition: max-height 0.4s ease-out;
-    height: 330px;
+    height: fit-content;
     overflow: hidden;
 }
 
@@ -53,7 +53,6 @@
 }
 
 .orderStatus {
-    color: rgb(158, 111, 24);;
     position: relative;
 }
 
@@ -66,9 +65,15 @@
     transform: translateY(-50%);
     border-radius: 50%;
     left: -20px;
-    background-color: rgb(158, 111, 24);
 }
 
+.toBeDelivered {
+    color: rgb(158, 111, 24);;
+}
+
+.toBeDelivered::before {
+    background-color: rgb(158, 111, 24);
+}
 
 .delivered {
     color: rgb(3, 104, 3);
@@ -76,4 +81,12 @@
 
 .delivered::before {
     background-color: rgb(3, 104, 3);
+}
+
+.canceled {
+    color: rgb(183, 2, 63);
+}
+
+.canceled::before {
+    background-color:  rgb(183, 2, 63);
 }
