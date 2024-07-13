@@ -268,6 +268,18 @@ export const sendEmailUserUpdateMessage = async (email: string) => {
     }
 };
 
+export const SendEmailOrderStatus = async (email: string, message: string) => {
+    try {
+        const response = await axios.post('Email/send-email-order-status', {
+            email: email,
+            message: message
+        });
+        console.log(response.data);
+    } catch (error) {
+        console.log('Error sending email!');
+    }
+};
+
 export const updateUser = async (user: UpdatedUser) => {
     console.log(user);
     

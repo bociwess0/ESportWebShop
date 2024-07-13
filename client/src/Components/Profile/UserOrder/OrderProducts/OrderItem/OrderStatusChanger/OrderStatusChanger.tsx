@@ -2,6 +2,7 @@ import { useState } from "react";
 import classes from "./OrderStatusChanger.module.css";
 import PopupModal from "../../../../../Layout/PopupModal/PopupModal";
 import ToastMessage from "../../../../../Layout/ToastMessage/ToastMessage";
+import { SendEmailOrderStatus, sendEmailMessage } from "../../../../../../DatabaseRequests/Requests";
 
 interface Props {
     message: string,
@@ -9,9 +10,11 @@ interface Props {
     action: Function,
     orderStatus: string,
     popupMessage: string,
+    emailMessage: string,
+    email: string
 }
 
-function OrderStatusChanger({message, orderStatus, buttonText, action, popupMessage}: Props) {
+function OrderStatusChanger({message, orderStatus, buttonText, action, email, emailMessage, popupMessage}: Props) {
 
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -29,6 +32,7 @@ function OrderStatusChanger({message, orderStatus, buttonText, action, popupMess
 
     function actionHandler() {
         action();
+        SendEmailOrderStatus(email, emailMessage)
         handleShowToast();
     }
 

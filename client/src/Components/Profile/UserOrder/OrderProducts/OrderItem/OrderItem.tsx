@@ -2,12 +2,14 @@ import{ useState, CSSProperties, useEffect } from 'react';
 import classes from './OrderItem.module.css';
 import arrow from '../../../../../Assets/arrow_down.png';
 import OrderProduct from './OrderProduct/OrderProduct';
-import { Order, OrderProductObj } from '../../../../../Interfaces/Interface';
+import { Order, OrderProductObj, User } from '../../../../../Interfaces/Interface';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CustomDot from './CustomDot/CustomDot';
 import OrderStatusChanger from './OrderStatusChanger/OrderStatusChanger';
 import { changeOrderStatus } from '../../../../../DatabaseRequests/Requests';
+import { useSelector } from 'react-redux';
+import { RootStateProfile } from '../../../../../Redux/profileSlice';
 
 const responsive = {
   superLargeDesktop: {
@@ -36,6 +38,7 @@ function OrderItem ({order} : Props) {
   const [selected, setSelected] = useState<boolean>(false);
 
   const [deliveredClass, setDeliveredClass] = useState<string>(classes.toBeDelivered);
+  const loggedUser: User = useSelector((state: RootStateProfile) => state.profileActions.loggedUser);
   
 
   let products = order.orderItems;
@@ -122,6 +125,8 @@ function OrderItem ({order} : Props) {
                 buttonText='Delivered' 
                 message='If you have received your order, please confirm by clicking the button next to it:' 
                 popupMessage="Are you sure you want to set this order as deliverd?"
+                email={loggedUser.email}
+                emailMessage="We are glad you get what you deserve! Thanks for the feedback about delivery."
                 key={1}
           />}
           {order.orderStatus === "To be delivered" && <OrderStatusChanger 
@@ -130,6 +135,8 @@ function OrderItem ({order} : Props) {
                 buttonText='Cancel' 
                 message='If you want to cancel this order please confirm by clicking the button next to it:' 
                 popupMessage="Are you sure you want to cancel this order?"
+                email={loggedUser.email}
+                emailMessage="You successfully canceled your order!"
                 key={2}
           />}
         </div>

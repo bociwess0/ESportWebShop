@@ -42,5 +42,18 @@ namespace API.Services
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }
+
+       public async Task SendEmailOrderStatus(string email, string message)
+        {
+            var apiKey = _configuration["SendGrid:ApiKey"];
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("etechwebshop@yopmail.com", "Etech Web Shop");
+            var subject = "Information about successfully changed your order status!";
+            var to = new EmailAddress(email);
+            var plainTextContent = $"You";
+            var htmlContent = $"<h1>{message}</h1>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
     }
 }
