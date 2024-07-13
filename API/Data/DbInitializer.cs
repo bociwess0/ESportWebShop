@@ -10,6 +10,43 @@ namespace API.Data
 {
     public class DbInitializer
     {
+        public static async Task SeedAdminUser(IServiceProvider serviceProvider) {
+            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            string[] roleNames = { "Member", "Admin" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    // Create the roles and seed them to the database
+                    roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            // Check if the admin user exists
+            var admin = await userManager.FindByEmailAsync("admin@test.com");
+            if (admin == null)
+            {
+                admin = new User
+                {
+                    UserName = "admin@test.com",
+                    Email = "admin@test.com",
+                    FirstName = "Admin",
+                    LastName = "User",
+                    Address = "Admin Address",
+                    City = "Admin City"
+                };
+                var result = await userManager.CreateAsync(admin, "Pa$$w0rd");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRolesAsync(admin, roleNames);
+                }
+            }
+        }
         public static async Task Initialize(StoreContext context, UserManager<User> userManager) {
 
             if(!userManager.Users.Any()) {
@@ -21,13 +58,6 @@ namespace API.Data
                 await userManager.CreateAsync(user, "Pa$$w0rd"); //kreiranje usera
                 await userManager.AddToRoleAsync(user, "Member");
 
-                var admin = new User {
-                    UserName = "admin",
-                    Email = "admin@test.com",
-                };
-
-                await userManager.CreateAsync(admin, "Pa$$w0rd");
-                await userManager.AddToRolesAsync(admin, new[] { "Member", "Admin" });
 
             }
 

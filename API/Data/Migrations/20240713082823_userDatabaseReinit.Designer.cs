@@ -3,6 +3,7 @@ using System;
 using API.Data.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240713082823_userDatabaseReinit")]
+    partial class userDatabaseReinit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
@@ -245,13 +248,13 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3c6bfe53-37bb-4458-bfcb-7bf53028caee",
+                            Id = "43a6c9c4-38c9-4c20-9e33-8295a0ce3fd9",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "4ae6643f-2308-4290-a272-6c9859c3a9e6",
+                            Id = "f7ad2908-8d7d-4155-87b3-5a67d37cf5d8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

@@ -97,6 +97,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
 var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
 var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
@@ -105,6 +106,7 @@ try
 {
     await context.Database.MigrateAsync();
     await DbInitializer.Initialize(context, userManager);
+    await DbInitializer.SeedAdminUser(services);
 
 }
 catch (Exception ex)

@@ -6,6 +6,7 @@ using API.Data.Migrations;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +15,10 @@ namespace API.Controllers
     public class OrderController : BaseApiController
     {
         private readonly StoreContext _context;
-        public OrderController(StoreContext context) {
+        private readonly UserManager<User> _userManager;
+        public OrderController(StoreContext context, UserManager<User> userManager) {
             _context = context;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -25,10 +28,18 @@ namespace API.Controllers
                 return NotFound("User not found");
             }
 
-            return await _context.Orders
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+
+            if (isAdmin) {
+                return await _context.Orders
+                    .Include(o => o.OrderItems)
+                    .ToListAsync();
+            } else  {
+                return await _context.Orders
                     .Include(o => o.OrderItems)
                     .Where(x => x.UserId == user.Id)
                     .ToListAsync();
+            }
         }
 
         [HttpPost]
