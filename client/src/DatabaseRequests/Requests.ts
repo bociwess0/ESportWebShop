@@ -59,10 +59,6 @@ export async function fetchProductById(id: number) : Promise<Product> {
 
 export async function changeQuantityInStock(id:number, quantity: number) {
 
-    console.log(id);
-    console.log(quantity);
-    
-
     try {
         const response: AxiosResponse<any> = await axios.put(`Products/changeQuantityInStock?id=${id}&quantity=${quantity}`);
 
