@@ -3,11 +3,32 @@
     height: 600px;
     padding: 50px;
     border-radius: 10px;
+    position: relative;
 }
 
 .imgWrapper img {
     height: 100%;
     width: 100%;
     max-width: 600px;
+}
+
+.outOfStock::before {
+    content: '';
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.outOfStock::after {
+    content: url('../../../Assets/out-of-stock.png');
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 

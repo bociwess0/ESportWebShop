@@ -38,20 +38,26 @@ namespace API.Controllers
         public async Task<ActionResult<CartDTO>> AddToCart(int productId, int quantity) {
             var cart = await RetrieveCart();
 
-            if(cart == null) cart = CreateCart();
+            if (cart == null) cart = CreateCart();
 
             var product = await _context.Products.FindAsync(productId);
-            
+
+            if (product.QuantityInStock < quantity)
+            {
+                return BadRequest("Quantity out of stock!");
+            }
+
             cart.AddCartItem(product, quantity);
+
+            product.QuantityInStock -= quantity;
 
             var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
 
             var cartDto = CartExtensions.MapCartDto(cart);
 
+            if (result) return CreatedAtRoute("GetCart", cartDto);
 
-            if(result) return CreatedAtRoute("GetCart", cartDto);
-
-            return null;
+            return StatusCode(500, "Problem saving changes to the database");
             
         }
 
@@ -61,9 +67,13 @@ namespace API.Controllers
 
             var cart = await RetrieveCart();
 
+            var product = await _context.Products.FindAsync(productId);
+
             if(cart == null) return null;
 
             cart.RemoveCartItem(productId, quantity);
+
+            product.QuantityInStock += quantity;
 
             var result = await _context.SaveChangesAsync() > 0; // returns int of number of changes made in db
 

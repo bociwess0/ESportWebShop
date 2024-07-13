@@ -57,6 +57,26 @@ export async function fetchProductById(id: number) : Promise<Product> {
 
 }
 
+export async function changeQuantityInStock(id:number, quantity: number) {
+
+    console.log(id);
+    console.log(quantity);
+    
+
+    try {
+        const response: AxiosResponse<any> = await axios.put(`Products/changeQuantityInStock?id=${id}&quantity=${quantity}`);
+
+        return response.data;
+
+    } catch (error) {
+        console.log("Error fetching product data!");
+        throw error;
+        
+    }
+}
+
+// Cart
+
 export async function fetchCart(): Promise<Cart> {
 
     if (checkCookie()) {

@@ -2,6 +2,8 @@ import { Product } from "../../../Interfaces/Interface";
 import classes from './CartItem.module.css';
 import ChooseQuantity from "../../Product/ChooseQuantity/ChooseQuantity";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { increaseProductQuantityInStock } from "../../../Redux/productSlice";
 
 interface Props {
     product: Product;
@@ -11,8 +13,11 @@ interface Props {
 
 function CartItem({product, removeProduct, showModal}: Props) {
 
+    const dispatch = useDispatch();
+
     const removeFromCartHandler = () => {
         removeProduct(product);
+        dispatch(increaseProductQuantityInStock({productid: product.id, quantity: product.quantity}))
         showModal();
     }
 

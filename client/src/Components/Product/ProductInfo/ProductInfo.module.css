@@ -29,3 +29,8 @@
     margin-top: 20px;
     transition: all 0.5s;
 }
+
+.outOfStockButton {
+    pointer-events: none;
+    background: linear-gradient(#7f7e7e, #393939);
+}

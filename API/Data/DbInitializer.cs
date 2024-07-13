@@ -73,7 +73,7 @@ namespace API.Data
                     PictureUrl = "/images/products/logitech_mouse_1.jpg",
                     Brand = "Logitech",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -83,7 +83,7 @@ namespace API.Data
                     PictureUrl = "/images/products/logitech_mouse_2.jpg",
                     Brand = "Logitech",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 2
                 },
                 new Product
                 {
@@ -94,7 +94,7 @@ namespace API.Data
                     PictureUrl = "/images/products/genius_mouse_1.jpg",
                     Brand = "Genius",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -105,7 +105,7 @@ namespace API.Data
                     PictureUrl = "/images/products/genius_mouse_2.jpg",
                     Brand = "Genius",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 3
                 },
                 new Product
                 {
@@ -116,7 +116,7 @@ namespace API.Data
                     PictureUrl = "/images/products/hyperx_mouse_1.webp",
                     Brand = "HyperX",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -127,7 +127,7 @@ namespace API.Data
                     PictureUrl = "/images/products/corsair_mouse.jpg",
                     Brand = "Corsair",
                     Type = "Mouses",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -138,7 +138,7 @@ namespace API.Data
                     PictureUrl = "/images/products/genius_headphones.png",
                     Brand = "Genius",
                     Type = "Headphones",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -149,7 +149,7 @@ namespace API.Data
                     PictureUrl = "/images/products/hyperx_headphones_1.webp",
                     Brand = "HyperX",
                     Type = "Headphones",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -160,7 +160,7 @@ namespace API.Data
                     PictureUrl = "/images/products/hyperx_headphones_2.webp",
                     Brand = "HyperX",
                     Type = "Headphones",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                     
                 },
                 new Product
@@ -172,7 +172,7 @@ namespace API.Data
                     PictureUrl = "/images/products/razer_speakers.png",
                     Brand = "Razer",
                     Type = "Speakers",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -183,7 +183,7 @@ namespace API.Data
                     PictureUrl = "/images/products/razer_speakers2.png",
                     Brand = "Razer",
                     Type = "Speakers",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -194,7 +194,7 @@ namespace API.Data
                     PictureUrl = "/images/products/jbl_speaker.webp",
                     Brand = "JBL",
                     Type = "Speakers",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -205,7 +205,7 @@ namespace API.Data
                     PictureUrl = "/images/products/jbl_speaker2.webp",
                     Brand = "JBL",
                     Type = "Speakers",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -216,7 +216,7 @@ namespace API.Data
                     PictureUrl = "/images/products/rampage_keyboard.png",
                     Brand = "Rampage",
                     Type = "Keyboards",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -227,7 +227,7 @@ namespace API.Data
                     PictureUrl = "/images/products/rampage_keyboard2.png",
                     Brand = "Rampage",
                     Type = "Keyboards",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -238,7 +238,7 @@ namespace API.Data
                     PictureUrl = "/images/products/genius_keyboard.jpg",
                     Brand = "Genius",
                     Type = "Keyboards",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -248,7 +248,7 @@ namespace API.Data
                     PictureUrl = "/images/products/logitech_keyboard.webp",
                     Brand = "Logitech",
                     Type = "Keyboards",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
                 new Product
                 {
@@ -258,7 +258,7 @@ namespace API.Data
                     PictureUrl = "/images/products/logitech_keyboard2.webp",
                     Brand = "Logitech",
                     Type = "Keyboards",
-                    QuantityInStock = 100
+                    QuantityInStock = 10
                 },
             };
 

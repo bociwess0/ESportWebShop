@@ -2,14 +2,15 @@ import{ useState, CSSProperties, useEffect } from 'react';
 import classes from './OrderItem.module.css';
 import arrow from '../../../../../Assets/arrow_down.png';
 import OrderProduct from './OrderProduct/OrderProduct';
-import { Order, OrderProductObj, User } from '../../../../../Interfaces/Interface';
+import { Order, OrderProductObj, Product, User } from '../../../../../Interfaces/Interface';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CustomDot from './CustomDot/CustomDot';
 import OrderStatusChanger from './OrderStatusChanger/OrderStatusChanger';
-import { changeOrderStatus } from '../../../../../DatabaseRequests/Requests';
-import { useSelector } from 'react-redux';
+import { changeOrderStatus, changeQuantityInStock, removeFromCartDB } from '../../../../../DatabaseRequests/Requests';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootStateProfile } from '../../../../../Redux/profileSlice';
+import { increaseProductQuantityInStock } from '../../../../../Redux/productSlice';
 
 const responsive = {
   superLargeDesktop: {
@@ -35,6 +36,9 @@ interface Props {
 }
 
 function OrderItem ({order} : Props) {
+
+  const dispatch = useDispatch();
+
   const [selected, setSelected] = useState<boolean>(false);
 
   const [deliveredClass, setDeliveredClass] = useState<string>(classes.toBeDelivered);
@@ -42,6 +46,7 @@ function OrderItem ({order} : Props) {
   
 
   let products = order.orderItems;
+  
 
   const onClickHandler = () => {
     setSelected(!selected);
@@ -77,10 +82,13 @@ function OrderItem ({order} : Props) {
   }
 
   function cancelHandler() {
-    changeOrderStatus(order.id, "Canceled");
+    products.forEach((item: OrderProductObj) => {
+      changeQuantityInStock(item.productId, item.quantity);
+      dispatch(increaseProductQuantityInStock({productid: item.productId, quantity: item.quantity}))
+    })
     setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    changeOrderStatus(order.id, "Canceled");
+  }, 500);
   }
 
   return (

@@ -47,5 +47,24 @@ namespace API.Controllers
             }
             return product;
         }
+
+        [HttpPut("changeQuantityInStock")]
+        public async Task<ActionResult<Product>> ChangeQuantityInStock(int id, int quantity) {
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) 
+            {
+                return NotFound();
+            }
+
+            product.QuantityInStock = quantity;
+
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if(result) return Ok(product);
+
+            return BadRequest();
+        }
+
     }
 }
